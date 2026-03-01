@@ -468,6 +468,59 @@
   .color-picker-group input[type=color] { width: 40px; height: 36px; padding: 2px; border-radius: 7px; cursor: pointer; border: 1px solid var(--border); flex-shrink: 0; }
   .color-picker-group input[type=text] { flex: 1; }
 
+  /* ── ACTION SHEET ── */
+  .action-sheet-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(26,21,16,0.45); backdrop-filter: blur(2px);
+    z-index: 600;
+  }
+  .action-sheet-overlay.open { display: block; }
+
+  .action-sheet {
+    position: fixed; left: 8px; right: 8px; bottom: calc(var(--tab-h) + 8px);
+    background: var(--warm-white);
+    border-radius: 20px;
+    padding: 16px 16px 20px;
+    z-index: 700;
+    transform: translateY(calc(100% + var(--tab-h) + 20px));
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: var(--shadow-lg);
+  }
+  .action-sheet.open { transform: translateY(0); }
+
+  .action-sheet-handle { width: 36px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 16px; }
+
+  .action-sheet-title {
+    font-family: 'DM Mono', monospace; font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-align: center; margin-bottom: 14px;
+  }
+
+  .action-sheet-btn {
+    width: 100%; display: flex; align-items: center; gap: 16px;
+    padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border);
+    background: white; cursor: pointer; transition: all 0.15s;
+    margin-bottom: 10px; text-align: left;
+  }
+  .action-sheet-btn:hover, .action-sheet-btn:active { background: var(--accent-light); border-color: var(--accent); transform: scale(0.99); }
+
+  .action-sheet-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .action-sheet-btn-label { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .action-sheet-btn-sub { font-size: 0.75rem; color: var(--muted); }
+
+  .action-sheet-cancel {
+    width: 100%; padding: 13px; border-radius: 12px;
+    border: none; background: var(--cream); color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; transition: all 0.15s; margin-top: 4px;
+  }
+  .action-sheet-cancel:hover { background: var(--border); color: var(--ink); }
+
+  /* Only show action sheet on mobile */
+  @media (min-width: 768px) {
+    .action-sheet, .action-sheet-overlay { display: none !important; }
+  }
+
   /* Desktop sidebar inner */
   .ds-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; padding-left: 4px; }
   .desktop-sidebar .client-list { margin-bottom: 10px; }
@@ -589,7 +642,7 @@
     <span class="tab-icon">👤</span>
     <span class="tab-label">Clients</span>
   </button>
-  <button class="tab-btn tab-new" onclick="handleNewTap()">
+  <button class="tab-btn tab-new" onclick="openActionSheet()">
     <span class="tab-icon">＋</span>
     <span class="tab-label">New</span>
   </button>
@@ -597,6 +650,28 @@
     <span class="tab-icon">🗓</span>
     <span class="tab-label">Schedule</span>
   </button>
+</div>
+
+<!-- ACTION SHEET -->
+<div class="action-sheet-overlay" id="actionSheetOverlay" onclick="closeActionSheet()"></div>
+<div class="action-sheet" id="actionSheet">
+  <div class="action-sheet-handle"></div>
+  <div class="action-sheet-title">What would you like to add?</div>
+  <button class="action-sheet-btn" onclick="closeActionSheet(); openNewClientModal()">
+    <span class="action-sheet-icon">👤</span>
+    <div>
+      <div class="action-sheet-btn-label">New Client</div>
+      <div class="action-sheet-btn-sub">Add a client to your roster</div>
+    </div>
+  </button>
+  <button class="action-sheet-btn" onclick="closeActionSheet(); openNewApptModal()">
+    <span class="action-sheet-icon">🗓</span>
+    <div>
+      <div class="action-sheet-btn-label">New Appointment</div>
+      <div class="action-sheet-btn-sub">Book a session & export to Calendar</div>
+    </div>
+  </button>
+  <button class="action-sheet-cancel" onclick="closeActionSheet()">Cancel</button>
 </div>
 
 <!-- FORMULA MODAL -->
@@ -739,6 +814,16 @@ if (!data.clients.length) {
     ]
   };
   saveData(data);
+}
+
+// ── ACTION SHEET ──────────────────────────────────────────────────
+function openActionSheet() {
+  document.getElementById('actionSheet').classList.add('open');
+  document.getElementById('actionSheetOverlay').classList.add('open');
+}
+function closeActionSheet() {
+  document.getElementById('actionSheet').classList.remove('open');
+  document.getElementById('actionSheetOverlay').classList.remove('open');
 }
 
 // ── DRAWER ────────────────────────────────────────────────────────
