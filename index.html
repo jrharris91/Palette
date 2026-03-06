@@ -468,6 +468,224 @@
   .color-picker-group input[type=color] { width: 40px; height: 36px; padding: 2px; border-radius: 7px; cursor: pointer; border: 1px solid var(--border); flex-shrink: 0; }
   .color-picker-group input[type=text] { flex: 1; }
 
+  /* ── ONBOARDING BANNER ── */
+  .onboarding-banner {
+    background: linear-gradient(135deg, var(--ink) 0%, #2d2520 100%);
+    border-radius: 16px; padding: 20px 22px; margin-bottom: 24px;
+    position: relative; overflow: hidden;
+  }
+  .onboarding-banner::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+  .onboarding-close {
+    position: absolute; top: 12px; right: 14px;
+    background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.5);
+    width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+    font-size: 0.75rem; display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .onboarding-close:hover { background: rgba(255,255,255,0.2); color: white; }
+  .onboarding-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cream); margin-bottom: 14px; }
+  .onboarding-steps { display: flex; flex-direction: column; gap: 10px; }
+  .onboarding-step { display: flex; align-items: flex-start; gap: 12px; color: rgba(249,245,238,0.85); font-size: 0.85rem; line-height: 1.4; }
+  .onboarding-num {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--accent);
+    color: white; font-size: 0.7rem; font-weight: 600; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+
+  /* ── WELCOME START BUTTON ── */
+  .btn-welcome-start {
+    margin-top: 24px; background: var(--ink); color: var(--cream);
+    border: none; padding: 14px 28px; border-radius: 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: var(--shadow);
+  }
+  .btn-welcome-start:hover { background: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+  /* ── DRAWER EMPTY STATE ── */
+  .drawer-empty { text-align: center; padding: 20px 16px; color: var(--muted); }
+  .drawer-empty-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.5; }
+  .drawer-empty p { font-size: 0.82rem; line-height: 1.5; }
+
+  .sidebar-empty { padding: 8px 4px; }
+  .sidebar-empty p { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+
+  /* ── LAST CUT CARD ── */
+  .last-cut-card {
+    background: white; border-radius: 14px; border: 1px solid var(--border);
+    padding: 18px 20px; margin-bottom: 24px; box-shadow: var(--shadow);
+    position: relative; overflow: hidden;
+  }
+  .last-cut-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--appt-blue), #7AB8D4);
+  }
+  .last-cut-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .last-cut-title {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--appt-blue);
+  }
+  .last-cut-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+  .last-cut-service { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
+  .last-cut-notes {
+    font-size: 0.85rem; line-height: 1.6; color: var(--ink);
+    background: var(--cream); border-radius: 8px; padding: 10px 14px;
+    white-space: pre-wrap;
+  }
+  .last-cut-edit {
+    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border);
+    display: flex; justify-content: flex-end;
+  }
+
+  /* ── SCHEDULE TOGGLE ── */
+  .schedule-toggle {
+    display: flex; gap: 6px; margin-bottom: 20px;
+    background: var(--border); border-radius: 12px; padding: 4px;
+  }
+  .schedule-toggle-btn {
+    flex: 1; padding: 9px 16px; border-radius: 9px; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; color: var(--muted); background: none;
+  }
+  .schedule-toggle-btn.active { background: white; color: var(--ink); box-shadow: var(--shadow); }
+  .schedule-toggle-btn:hover:not(.active) { color: var(--ink); }
+
+  /* ── REVENUE SUMMARY CARDS ── */
+  .revenue-summary {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
+  }
+  .rev-summary-card {
+    background: white; border: 1px solid var(--border); border-radius: 14px;
+    padding: 16px 18px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .rev-summary-card.highlight { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .rev-summary-card.highlight .rev-summary-label { color: rgba(249,245,238,0.6); }
+  .rev-summary-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .rev-summary-card.today::before { background: var(--gold); }
+  .rev-summary-card.week::before { background: var(--accent); }
+  .rev-summary-card.month::before { background: var(--appt-blue); }
+  .rev-summary-value { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 3px; }
+  .rev-summary-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .rev-summary-sub { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+  .rev-summary-card.highlight .rev-summary-sub { color: rgba(249,245,238,0.5); }
+
+  /* ── REVENUE PERIOD TABS ── */
+  .revenue-period-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .rev-tab {
+    padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
+    background: none; font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    cursor: pointer; transition: all 0.15s; color: var(--muted);
+  }
+  .rev-tab:hover { border-color: var(--accent); color: var(--accent); }
+  .rev-tab.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  /* ── REVENUE DAILY BREAKDOWN ── */
+  .rev-day-group { margin-bottom: 16px; }
+  .rev-day-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; background: var(--cream); border-radius: 10px;
+    margin-bottom: 6px; border: 1px solid var(--border);
+  }
+  .rev-day-label { font-family: 'DM Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em; }
+  .rev-day-total { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--accent); }
+  .rev-day-total span { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); font-weight: 400; margin-left: 6px; }
+
+  .rev-appt-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 16px; background: white; border-radius: 10px;
+    border: 1px solid var(--border); margin-bottom: 6px; gap: 12px;
+  }
+  .rev-appt-left { flex: 1; min-width: 0; }
+  .rev-appt-client { font-weight: 600; font-size: 0.88rem; }
+  .rev-appt-service { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+  .rev-appt-right { text-align: right; flex-shrink: 0; }
+  .rev-appt-total { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; }
+  .rev-appt-breakdown { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); margin-top: 2px; }
+  .rev-tip-badge {
+    display: inline-block; background: #E8F4DC; color: #4A7A35;
+    font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 2px 7px;
+    border-radius: 20px; margin-left: 6px; vertical-align: middle;
+  }
+  .rev-add-tip {
+    background: none; border: 1px dashed var(--border); color: var(--muted);
+    border-radius: 7px; padding: 3px 10px; font-size: 0.72rem;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .rev-add-tip:hover { border-color: #4A7A35; color: #4A7A35; background: #E8F4DC; }
+
+  .rev-tab.rev-export-btn {
+    margin-left: auto;
+    background: var(--ink); color: var(--cream); border-color: var(--ink);
+  }
+  .rev-tab.rev-export-btn:hover { background: var(--accent); border-color: var(--accent); color: white; }
+
+  .rev-empty { text-align: center; padding: 48px 20px; color: var(--muted); }
+  .rev-empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
+  .rev-empty p { font-size: 0.85rem; max-width: 260px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── SETTINGS PAGE ── */
+  .settings-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .settings-header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 4px; }
+  .settings-header p { color: var(--muted); font-size: 0.85rem; }
+
+  .settings-section { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; }
+
+  .settings-section-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; border-bottom: 1px solid var(--border); gap: 12px; }
+  .settings-section-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+  .settings-section-sub { font-size: 0.78rem; color: var(--muted); }
+
+  .settings-category-tabs { display: flex; gap: 6px; padding: 14px 22px 0; flex-wrap: wrap; }
+
+  .cat-tab {
+    padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border);
+    background: none; font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+    cursor: pointer; transition: all 0.15s; color: var(--muted);
+  }
+  .cat-tab:hover { border-color: var(--accent); color: var(--accent); }
+  .cat-tab.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .service-list { padding: 14px 22px 22px; display: flex; flex-direction: column; gap: 10px; }
+
+  .service-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border);
+    background: var(--cream); transition: all 0.15s;
+  }
+  .service-item:hover { border-color: var(--accent-light); background: var(--warm-white); }
+
+  .service-color-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .service-item-info { flex: 1; min-width: 0; }
+  .service-item-name { font-weight: 600; font-size: 0.9rem; }
+  .service-item-meta { font-size: 0.75rem; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; }
+
+  .service-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+  .btn-icon {
+    width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
+    background: white; cursor: pointer; font-size: 0.85rem; color: var(--muted);
+    display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+  }
+  .btn-icon:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+  .btn-icon.danger:hover { border-color: #C0522A; color: #C0522A; background: #FDE8DC; }
+
+  .service-empty { padding: 40px 20px; text-align: center; color: var(--muted); }
+  .service-empty p { font-size: 0.85rem; margin-top: 8px; }
+
+  /* Category color dots */
+  .cat-Color { background: var(--accent); }
+  .cat-Cut { background: var(--appt-blue); }
+  .cat-Treatment { background: #5A8A6A; }
+  .cat-Style { background: var(--gold); }
+  .cat-Other { background: var(--muted); }
+
   /* ── ACTION SHEET ── */
   .action-sheet-overlay {
     display: none; position: fixed; inset: 0;
@@ -541,6 +759,7 @@
     <div class="desktop-nav" id="desktopNav">
       <button class="nav-btn active" id="navClients" onclick="switchPage('clients')">Clients</button>
       <button class="nav-btn" id="navSchedule" onclick="switchPage('schedule')">Schedule</button>
+      <button class="nav-btn" id="navSettings" onclick="switchPage('settings')">⚙ Settings</button>
     </div>
     <input class="header-search" type="text" placeholder="Search clients..." oninput="handleSearch(this.value)">
   </div>
@@ -561,7 +780,11 @@
   <div class="drawer-body">
     <div class="drawer-label">All Clients</div>
     <ul class="client-list" id="drawerClientList"></ul>
-    <button class="btn-add-client" onclick="openNewClientModal()">+ New Client</button>
+    <div id="drawerEmptyState" style="display:none;" class="drawer-empty">
+      <div class="drawer-empty-icon">👤</div>
+      <p>No clients yet! Add your first one to get started.</p>
+    </div>
+    <button class="btn-add-client" onclick="closeDrawer(); openNewClientModal()">+ Add New Client</button>
   </div>
 </div>
 
@@ -572,7 +795,10 @@
   <div class="desktop-sidebar" id="desktopSidebar">
     <div class="ds-label" style="margin-top:16px;">Clients</div>
     <ul class="client-list" id="sidebarClientList"></ul>
-    <button class="btn-add-client" style="margin-top:8px;" onclick="openNewClientModal()">+ New Client</button>
+    <div id="sidebarEmptyState" style="display:none;" class="sidebar-empty">
+      <p>No clients yet.</p>
+    </div>
+    <button class="btn-add-client" style="margin-top:8px;" onclick="openNewClientModal()">+ Add New Client</button>
   </div>
 
   <!-- MAIN -->
@@ -582,10 +808,20 @@
     <div class="page active" id="pageClients">
 
       <div class="view active" id="welcomeView">
-        <div class="welcome">
+        <div id="onboardingBanner" class="onboarding-banner" style="display:none;">
+          <button class="onboarding-close" onclick="dismissOnboarding()">✕</button>
+          <div class="onboarding-title">👋 Welcome to Palette!</div>
+          <div class="onboarding-steps">
+            <div class="onboarding-step"><span class="onboarding-num">1</span><span>Add your clients using the <strong>☰ menu</strong> or button below</span></div>
+            <div class="onboarding-step"><span class="onboarding-num">2</span><span>Select a client to log their <strong>color formulas</strong></span></div>
+            <div class="onboarding-step"><span class="onboarding-num">3</span><span>Use <strong>Schedule</strong> to book appointments & export to Apple Calendar</span></div>
+          </div>
+        </div>
+        <div class="welcome" id="welcomeContent">
           <div class="welcome-icon">✦</div>
           <h2>Your Formula Studio</h2>
-          <p>Tap the menu icon to select a client, or add a new one to get started.</p>
+          <p id="welcomeSubtext">Add your first client to get started — all their color formulas, appointments, and cut notes will live here.</p>
+          <button class="btn-welcome-start" id="welcomeStartBtn" onclick="openNewClientModal()">+ Add Your First Client</button>
         </div>
       </div>
 
@@ -594,13 +830,14 @@
           <div class="client-header-top">
             <h1 id="clientName">—</h1>
             <div class="client-header-actions">
-              <button class="btn-secondary" onclick="deleteClient()">Remove</button>
-              <button class="btn-primary" onclick="openNewFormulaModal()">+ Formula</button>
+              <button class="btn-secondary" onclick="deleteClient()" title="Remove this client and all their records">Remove Client</button>
+              <button class="btn-primary" onclick="openNewFormulaModal()">+ Log Formula</button>
             </div>
           </div>
           <div class="client-tags" id="clientTags"></div>
         </div>
         <div class="stats-row" id="statsRow"></div>
+        <div id="lastCutCard"></div>
         <div class="section-label">Formula History</div>
         <div class="formula-grid" id="formulaGrid"></div>
       </div>
@@ -612,25 +849,69 @@
       <div class="appt-page-header">
         <div>
           <h1>Schedule</h1>
-          <p>Appointments & Apple Calendar export</p>
+          <p>Appointments & revenue tracking</p>
         </div>
         <button class="btn-primary" onclick="openNewApptModal()">+ New</button>
       </div>
 
-      <div class="ics-hint">
-        📅 Save an appointment to download a <strong>.ics file</strong> — double-click it to add directly to Apple Calendar on any device.
+      <!-- VIEW TOGGLE -->
+      <div class="schedule-toggle">
+        <button class="schedule-toggle-btn active" id="toggleAppts" onclick="switchScheduleView('appointments')">📅 Appointments</button>
+        <button class="schedule-toggle-btn" id="toggleRevenue" onclick="switchScheduleView('revenue')">💰 Revenue</button>
       </div>
 
-      <div class="appt-columns">
-        <div>
-          <div class="appt-col-title">Upcoming</div>
-          <div class="appt-list" id="upcomingList"></div>
+      <!-- APPOINTMENTS VIEW -->
+      <div id="scheduleApptView">
+        <div class="ics-hint">
+          📅 Save an appointment to download a <strong>.ics file</strong> — double-click it to add directly to Apple Calendar on any device.
         </div>
-        <div>
-          <div class="appt-col-title">Past</div>
-          <div class="appt-list" id="pastList"></div>
+        <div class="appt-columns">
+          <div>
+            <div class="appt-col-title">Upcoming</div>
+            <div class="appt-list" id="upcomingList"></div>
+          </div>
+          <div>
+            <div class="appt-col-title">Past</div>
+            <div class="appt-list" id="pastList"></div>
+          </div>
         </div>
       </div>
+
+      <!-- REVENUE VIEW -->
+      <div id="scheduleRevenueView" style="display:none;">
+        <div class="revenue-summary" id="revenueSummary"></div>
+        <div class="revenue-period-tabs">
+          <button class="rev-tab active" id="revTabWeek" onclick="setRevenuePeriod('week')">This Week</button>
+          <button class="rev-tab" id="revTabMonth" onclick="setRevenuePeriod('month')">This Month</button>
+          <button class="rev-tab" id="revTabYear" onclick="setRevenuePeriod('year')">This Year</button>
+          <button class="rev-tab" id="revTabAll" onclick="setRevenuePeriod('all')">All Time</button>
+          <button class="rev-tab rev-export-btn" onclick="exportRevenueCSV()">⬇ Export CSV</button>
+        </div>
+        <div id="revenueDailyList"></div>
+      </div>
+    </div>
+
+    <!-- SETTINGS PAGE -->
+    <div class="page" id="pageSettings">
+      <div class="settings-header">
+        <h1>Settings</h1>
+        <p>Customize your service menu, prices, and defaults</p>
+      </div>
+
+      <!-- SERVICE MENU SECTION -->
+      <div class="settings-section">
+        <div class="settings-section-header">
+          <div>
+            <div class="settings-section-title">Service Menu</div>
+            <div class="settings-section-sub">These populate your appointment and formula dropdowns</div>
+          </div>
+          <button class="btn-primary" onclick="openNewServiceModal()">+ Add Service</button>
+        </div>
+
+        <div class="settings-category-tabs" id="serviceCategoryTabs"></div>
+        <div class="service-list" id="serviceList"></div>
+      </div>
+
     </div>
 
   </main>
@@ -649,6 +930,10 @@
   <button class="tab-btn" id="tabSchedule" onclick="switchPage('schedule')">
     <span class="tab-icon">🗓</span>
     <span class="tab-label">Schedule</span>
+  </button>
+  <button class="tab-btn" id="tabSettings" onclick="switchPage('settings')">
+    <span class="tab-icon">⚙️</span>
+    <span class="tab-label">Settings</span>
   </button>
 </div>
 
@@ -674,6 +959,40 @@
   <button class="action-sheet-cancel" onclick="closeActionSheet()">Cancel</button>
 </div>
 
+<!-- SERVICE MODAL -->
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="serviceModalTitle">New Service</div>
+    <div class="form-grid">
+      <div class="form-group full"><label>Service Name</label><input type="text" id="svcName" placeholder="e.g. Balayage"></div>
+      <div class="form-group full"><label>Category</label>
+        <select id="svcCategory">
+          <option value="Color">Color</option>
+          <option value="Cut">Cut</option>
+          <option value="Treatment">Treatment</option>
+          <option value="Style">Style</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Default Price</label><input type="text" id="svcPrice" placeholder="e.g. $120"></div>
+      <div class="form-group"><label>Default Duration</label>
+        <select id="svcDuration">
+          <option value="30">30 min</option><option value="45">45 min</option>
+          <option value="60" selected>1 hour</option><option value="90">1.5 hours</option>
+          <option value="120">2 hours</option><option value="150">2.5 hours</option>
+          <option value="180">3 hours</option><option value="240">4 hours</option>
+        </select>
+      </div>
+      <div class="form-group full"><label>Notes (optional)</label><textarea id="svcNotes" placeholder="e.g. Includes gloss, patch test required..."></textarea></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('serviceModal')">Cancel</button>
+      <button class="btn-primary" id="serviceSaveBtn" onclick="saveService()">Add Service</button>
+    </div>
+  </div>
+</div>
+
 <!-- FORMULA MODAL -->
 <div class="modal-overlay" id="formulaModal">
   <div class="modal">
@@ -682,11 +1001,7 @@
     <div class="form-grid">
       <div class="form-group"><label>Date</label><input type="date" id="fDate"></div>
       <div class="form-group"><label>Service</label>
-        <select id="fService">
-          <option>Full Color</option><option>Root Touch-Up</option><option>Highlights</option>
-          <option>Balayage</option><option>Toner</option><option>Gloss</option>
-          <option>Color Correction</option><option>Bleach & Tone</option><option>Other</option>
-        </select>
+        <select id="fService"></select>
       </div>
       <div class="form-group"><label>Result Color</label>
         <div class="color-picker-group">
@@ -723,12 +1038,7 @@
     <div class="form-grid">
       <div class="form-group full"><label>Client</label><select id="aClient"></select></div>
       <div class="form-group full"><label>Service</label>
-        <select id="aService">
-          <option>Haircut</option><option>Blowout</option><option>Full Color</option>
-          <option>Root Touch-Up</option><option>Highlights</option><option>Balayage</option>
-          <option>Toner</option><option>Gloss</option><option>Color Correction</option>
-          <option>Bleach & Tone</option><option>Cut & Color</option><option>Trim</option><option>Other</option>
-        </select>
+        <select id="aService" onchange="onApptServiceChange()"></select>
       </div>
       <div class="form-group"><label>Date</label><input type="date" id="aDate"></div>
       <div class="form-group"><label>Start Time</label><input type="time" id="aTime"></div>
@@ -740,8 +1050,17 @@
           <option value="180">3 hours</option><option value="240">4 hours</option>
         </select>
       </div>
-      <div class="form-group"><label>Price (optional)</label><input type="text" id="aPrice" placeholder="e.g. $120"></div>
+      <div class="form-group"><label>Service Price</label><input type="text" id="aPrice" placeholder="e.g. $120" oninput="syncRevFields('price')"></div>
+      <div class="form-group"><label>Tip</label><input type="text" id="aTip" placeholder="e.g. $20" oninput="syncRevFields('tip')"></div>
+      <div class="form-group full">
+        <label>Total Received <span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);font-weight:400;letter-spacing:0;">— or enter this and tip auto-calculates</span></label>
+        <input type="text" id="aTotal" placeholder="e.g. $140" oninput="syncRevFields('total')">
+      </div>
       <div class="form-group full"><label>Notes</label><textarea id="aNotes" placeholder="e.g. Bring reference photos..."></textarea></div>
+      <div class="form-group full" id="toolNotesGroup" style="display:none;">
+        <label>✂️ Clipper & Tool Notes</label>
+        <textarea id="aToolNotes" placeholder="e.g. #2 sides, #4 on top, blended with shears. Texturizing on ends..."></textarea>
+      </div>
     </div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('apptModal')">Cancel</button>
@@ -770,12 +1089,28 @@
 </div>
 
 <script>
+const DEFAULT_SERVICES = [
+  { id: 's1', name: 'Haircut', category: 'Cut', price: '$55', duration: '60', notes: '' },
+  { id: 's2', name: 'Trim', category: 'Cut', price: '$35', duration: '30', notes: '' },
+  { id: 's3', name: 'Blowout', category: 'Style', price: '$45', duration: '45', notes: '' },
+  { id: 's4', name: 'Full Color', category: 'Color', price: '$120', duration: '120', notes: '' },
+  { id: 's5', name: 'Root Touch-Up', category: 'Color', price: '$85', duration: '90', notes: '' },
+  { id: 's6', name: 'Highlights', category: 'Color', price: '$150', duration: '150', notes: '' },
+  { id: 's7', name: 'Balayage', category: 'Color', price: '$180', duration: '180', notes: '' },
+  { id: 's8', name: 'Toner', category: 'Color', price: '$45', duration: '30', notes: '' },
+  { id: 's9', name: 'Gloss', category: 'Treatment', price: '$55', duration: '45', notes: '' },
+  { id: 's10', name: 'Color Correction', category: 'Color', price: '$250', duration: '240', notes: 'Price varies' },
+  { id: 's11', name: 'Bleach & Tone', category: 'Color', price: '$160', duration: '180', notes: '' },
+  { id: 's12', name: 'Cut & Color', category: 'Color', price: '$165', duration: '180', notes: '' },
+  { id: 's13', name: 'Olaplex Treatment', category: 'Treatment', price: '$40', duration: '30', notes: 'Add-on service' },
+];
+
 // ── DATA ──────────────────────────────────────────────────────────
 const STORAGE_KEY = 'palette_data_v2';
 
 function loadData() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { clients: [], formulas: [], appointments: [] }; }
-  catch { return { clients: [], formulas: [], appointments: [] }; }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { clients: [], formulas: [], appointments: [], services: [] }; }
+  catch { return { clients: [], formulas: [], appointments: [], services: [] }; }
 }
 function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
 
@@ -783,6 +1118,7 @@ let data = loadData();
 let activeClientId = null;
 let currentPage = 'clients';
 if (!data.appointments) { data.appointments = []; saveData(data); }
+if (!data.services || !data.services.length) { data.services = DEFAULT_SERVICES; saveData(data); }
 
 // Seed demo data
 if (!data.clients.length) {
@@ -809,7 +1145,7 @@ if (!data.clients.length) {
     ],
     appointments: [
       { id: 'a1', clientId: 'c1', service: 'Root Touch-Up', date: fmt(tomorrow), time: '10:00', duration: '90', price: '$95', notes: 'Check if she wants toner after.' },
-      { id: 'a2', clientId: 'c2', service: 'Haircut', date: fmt(nextWeek), time: '14:00', duration: '60', price: '$65', notes: '' },
+      { id: 'a2', clientId: 'c2', service: 'Haircut', date: fmt(nextWeek), time: '14:00', duration: '60', price: '$65', notes: '', toolNotes: '#2 guard sides & back, #4 on top. Blended with scissors. Texturizing shears on ends. Left length on top per client request.' },
       { id: 'a3', clientId: 'c1', service: 'Balayage', date: fmt(lastWeek), time: '11:00', duration: '180', price: '$180', notes: 'Went really well.' },
     ]
   };
@@ -847,13 +1183,17 @@ function switchPage(page) {
   currentPage = page;
   document.getElementById('pageClients').classList.toggle('active', page === 'clients');
   document.getElementById('pageSchedule').classList.toggle('active', page === 'schedule');
+  document.getElementById('pageSettings').classList.toggle('active', page === 'settings');
   // mobile tab bar
   document.getElementById('tabClients')?.classList.toggle('active', page === 'clients');
   document.getElementById('tabSchedule')?.classList.toggle('active', page === 'schedule');
+  document.getElementById('tabSettings')?.classList.toggle('active', page === 'settings');
   // desktop nav pills
   document.getElementById('navClients')?.classList.toggle('active', page === 'clients');
   document.getElementById('navSchedule')?.classList.toggle('active', page === 'schedule');
+  document.getElementById('navSettings')?.classList.toggle('active', page === 'settings');
   if (page === 'schedule') renderAppointments();
+  if (page === 'settings') renderSettings();
 }
 
 // The center + button context-aware action
@@ -908,8 +1248,37 @@ function renderClientList(filter = '') {
 
   const drawer = document.getElementById('drawerClientList');
   const sidebar = document.getElementById('sidebarClientList');
+  const drawerEmpty = document.getElementById('drawerEmptyState');
+  const sidebarEmpty = document.getElementById('sidebarEmptyState');
+
   if (drawer) drawer.innerHTML = html;
   if (sidebar) sidebar.innerHTML = html;
+
+  // Show/hide empty states
+  const noClients = data.clients.length === 0;
+  const noResults = clients.length === 0 && data.clients.length > 0;
+  if (drawerEmpty) drawerEmpty.style.display = (noClients || noResults) ? 'block' : 'none';
+  if (sidebarEmpty) sidebarEmpty.style.display = (noClients || noResults) ? 'block' : 'none';
+  if (noResults && drawerEmpty) drawerEmpty.querySelector('p').textContent = 'No clients match your search.';
+  if (noClients && drawerEmpty) drawerEmpty.querySelector('p').textContent = 'No clients yet! Add your first one to get started.';
+
+  // Update welcome screen based on whether clients exist
+  updateWelcomeScreen();
+}
+
+function updateWelcomeScreen() {
+  const startBtn = document.getElementById('welcomeStartBtn');
+  const subtext = document.getElementById('welcomeSubtext');
+  if (!startBtn) return;
+  if (data.clients.length > 0) {
+    startBtn.textContent = '☰ Open Client List';
+    startBtn.onclick = openDrawer;
+    if (subtext) subtext.textContent = 'Select a client from the menu to view their formulas and history.';
+  } else {
+    startBtn.textContent = '+ Add Your First Client';
+    startBtn.onclick = openNewClientModal;
+    if (subtext) subtext.textContent = 'Add your first client to get started — all their color formulas, appointments, and cut notes will live here.';
+  }
 }
 
 function selectClient(id) {
@@ -929,6 +1298,7 @@ function selectClient(id) {
   document.getElementById('clientTags').innerHTML = tags.join('');
 
   renderStats(id);
+  renderLastCutCard(id);
   renderFormulas(id);
   renderClientList();
 }
@@ -944,6 +1314,32 @@ function renderStats(clientId) {
     <div class="stat-card"><div class="stat-value" style="font-size:1rem;padding-top:4px;">${last ? formatDate(last.date) : '—'}</div><div class="stat-label">Last Visit</div></div>
     <div class="stat-card"><div class="stat-value">${upcoming}</div><div class="stat-label">Upcoming</div></div>
   `;
+}
+
+function renderLastCutCard(clientId) {
+  const el = document.getElementById('lastCutCard');
+  if (!el) return;
+
+  // Find most recent appointment with tool notes for this client
+  const cutAppts = data.appointments
+    .filter(a => a.clientId === clientId && a.toolNotes && a.toolNotes.trim())
+    .sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time));
+
+  if (!cutAppts.length) { el.innerHTML = ''; return; }
+
+  const a = cutAppts[0];
+  el.innerHTML = `
+    <div class="last-cut-card">
+      <div class="last-cut-header">
+        <div class="last-cut-title">✂️ Last Cut Notes</div>
+        <div class="last-cut-date">${formatDate(a.date)}</div>
+      </div>
+      <div class="last-cut-service">${a.service}</div>
+      <div class="last-cut-notes">${a.toolNotes}</div>
+      <div class="last-cut-edit">
+        <button class="btn-edit-appt" onclick="openEditApptModal('${a.id}')">✎ Edit these notes</button>
+      </div>
+    </div>`;
 }
 
 function renderFormulas(clientId) {
@@ -1007,6 +1403,7 @@ function apptCardHTML(a, isUpcoming) {
       <div class="appt-duration">${formatDuration(a.duration)}</div>
     </div>
     ${a.notes ? `<div class="appt-notes">${a.notes}</div>` : ''}
+    ${a.toolNotes ? `<div class="appt-notes" style="color:var(--appt-blue);border-top:1px solid var(--border);margin-top:6px;padding-top:6px;">✂️ ${a.toolNotes}</div>` : ''}
     <div class="appt-card-actions" onclick="event.stopPropagation()">
       <button class="btn-calendar" onclick="downloadICS('${a.id}')">📅 Apple Calendar</button>
       <button class="btn-edit-appt" onclick="openEditApptModal('${a.id}')">✎ Edit</button>
@@ -1068,12 +1465,18 @@ function openNewApptModal() {
   document.getElementById('apptModalTitle').textContent = 'New Appointment';
   document.getElementById('apptSaveBtn').textContent = 'Save & Export to Calendar';
   populateApptClientDropdown(activeClientId);
+  document.getElementById('aService').innerHTML = getServiceOptions(null);
   document.getElementById('aDate').value = new Date().toISOString().split('T')[0];
   document.getElementById('aTime').value = '10:00';
   document.getElementById('aDuration').value = '60';
   document.getElementById('aPrice').value = '';
+  document.getElementById('aTip').value = '';
+  document.getElementById('aTotal').value = '';
   document.getElementById('aNotes').value = '';
+  document.getElementById('aToolNotes').value = '';
+  document.getElementById('toolNotesGroup').style.display = 'none';
   openModal('apptModal');
+  onApptServiceChange(); // check default service on open
 }
 
 function openEditApptModal(id) {
@@ -1083,12 +1486,19 @@ function openEditApptModal(id) {
   document.getElementById('apptModalTitle').textContent = 'Edit Appointment';
   document.getElementById('apptSaveBtn').textContent = 'Save Changes';
   populateApptClientDropdown(a.clientId);
-  document.getElementById('aService').value = a.service;
+  document.getElementById('aService').innerHTML = getServiceOptions(a.service);
   document.getElementById('aDate').value = a.date;
   document.getElementById('aTime').value = a.time;
   document.getElementById('aDuration').value = a.duration;
   document.getElementById('aPrice').value = a.price || '';
+  document.getElementById('aTip').value = a.tip || '';
+  document.getElementById('aTotal').value = a.price && a.tip
+    ? formatMoney(parseAmount(a.price) + parseAmount(a.tip)).replace('$','$')
+    : a.price || '';
   document.getElementById('aNotes').value = a.notes || '';
+  document.getElementById('aToolNotes').value = a.toolNotes || '';
+  const group = document.getElementById('toolNotesGroup');
+  group.style.display = isCutService(a.service) ? 'flex' : 'none';
   openModal('apptModal');
 }
 
@@ -1101,17 +1511,21 @@ function saveAppt() {
   const apptData = { clientId, service: document.getElementById('aService').value, date, time,
     duration: document.getElementById('aDuration').value,
     price: document.getElementById('aPrice').value.trim(),
-    notes: document.getElementById('aNotes').value.trim() };
+    tip: document.getElementById('aTip').value.trim(),
+    notes: document.getElementById('aNotes').value.trim(),
+    toolNotes: document.getElementById('aToolNotes').value.trim() };
 
   if (editingApptId) {
     const idx = data.appointments.findIndex(a => a.id === editingApptId);
     if (idx !== -1) data.appointments[idx] = { id: editingApptId, ...apptData };
     saveData(data); closeModal('apptModal'); renderAppointments();
+    if (activeClientId) renderLastCutCard(activeClientId);
     if (confirm('Appointment updated! Re-export to Apple Calendar?')) downloadICS(editingApptId);
   } else {
     const appt = { id: 'a' + Date.now(), ...apptData };
     data.appointments.push(appt);
     saveData(data); closeModal('apptModal'); renderAppointments();
+    if (activeClientId) renderLastCutCard(activeClientId);
     downloadICS(appt.id);
   }
 }
@@ -1121,7 +1535,7 @@ let ingredientCount = 0;
 
 function openNewFormulaModal() {
   document.getElementById('fDate').value = new Date().toISOString().split('T')[0];
-  document.getElementById('fService').value = 'Full Color';
+  document.getElementById('fService').innerHTML = getServiceOptions(null);
   document.getElementById('fColorHex').value = '#C9A882';
   document.getElementById('fColorPicker').value = '#C9A882';
   document.getElementById('fTime').value = '';
@@ -1186,7 +1600,7 @@ function saveClient() {
 function deleteClient() {
   if (!activeClientId) return;
   const client = data.clients.find(c => c.id === activeClientId);
-  if (!confirm(`Remove ${client?.name} and all their records?`)) return;
+  if (!confirm(`Remove ${client?.name} from your client list?\n\nThis will also delete all their formulas and appointments. This can't be undone.`)) return;
   data.clients = data.clients.filter(c => c.id !== activeClientId);
   data.formulas = data.formulas.filter(f => f.clientId !== activeClientId);
   data.appointments = data.appointments.filter(a => a.clientId !== activeClientId);
@@ -1196,10 +1610,388 @@ function deleteClient() {
   renderClientList();
 }
 
+// ── SETTINGS ──────────────────────────────────────────────────────
+let activeCategory = 'All';
+let editingServiceId = null;
+
+function renderSettings() {
+  const categories = ['All', ...new Set(data.services.map(s => s.category))];
+  document.getElementById('serviceCategoryTabs').innerHTML = categories.map(c =>
+    `<button class="cat-tab ${c === activeCategory ? 'active' : ''}" onclick="setCategory('${c}')">${c}</button>`
+  ).join('');
+  renderServiceList();
+}
+
+function setCategory(cat) {
+  activeCategory = cat;
+  renderSettings();
+}
+
+function renderServiceList() {
+  const services = activeCategory === 'All'
+    ? data.services
+    : data.services.filter(s => s.category === activeCategory);
+
+  const list = document.getElementById('serviceList');
+  if (!services.length) {
+    list.innerHTML = `<div class="service-empty"><div style="font-size:2rem;opacity:0.4">✂️</div><p>No services yet. Click "+ Add Service" to build your menu.</p></div>`;
+    return;
+  }
+
+  list.innerHTML = services.map(s => `
+    <div class="service-item">
+      <div class="service-color-dot cat-${s.category}"></div>
+      <div class="service-item-info">
+        <div class="service-item-name">${s.name}</div>
+        <div class="service-item-meta">${s.category} · ${s.price || 'No price set'} · ${formatDuration(s.duration)}</div>
+        ${s.notes ? `<div style="font-size:0.72rem;color:var(--muted);margin-top:2px;font-style:italic;">${s.notes}</div>` : ''}
+      </div>
+      <div class="service-item-actions">
+        <button class="btn-icon" onclick="openEditServiceModal('${s.id}')" title="Edit">✎</button>
+        <button class="btn-icon danger" onclick="deleteService('${s.id}')" title="Delete">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── SERVICE MODAL ─────────────────────────────────────────────────
+function openNewServiceModal() {
+  editingServiceId = null;
+  document.getElementById('serviceModalTitle').textContent = 'New Service';
+  document.getElementById('serviceSaveBtn').textContent = 'Add Service';
+  document.getElementById('svcName').value = '';
+  document.getElementById('svcCategory').value = 'Color';
+  document.getElementById('svcPrice').value = '';
+  document.getElementById('svcDuration').value = '60';
+  document.getElementById('svcNotes').value = '';
+  openModal('serviceModal');
+}
+
+function openEditServiceModal(id) {
+  const s = data.services.find(x => x.id === id);
+  if (!s) return;
+  editingServiceId = id;
+  document.getElementById('serviceModalTitle').textContent = 'Edit Service';
+  document.getElementById('serviceSaveBtn').textContent = 'Save Changes';
+  document.getElementById('svcName').value = s.name;
+  document.getElementById('svcCategory').value = s.category;
+  document.getElementById('svcPrice').value = s.price || '';
+  document.getElementById('svcDuration').value = s.duration;
+  document.getElementById('svcNotes').value = s.notes || '';
+  openModal('serviceModal');
+}
+
+function saveService() {
+  const name = document.getElementById('svcName').value.trim();
+  if (!name) { alert('Please enter a service name.'); return; }
+
+  const svcData = {
+    name,
+    category: document.getElementById('svcCategory').value,
+    price: document.getElementById('svcPrice').value.trim(),
+    duration: document.getElementById('svcDuration').value,
+    notes: document.getElementById('svcNotes').value.trim(),
+  };
+
+  if (editingServiceId) {
+    const idx = data.services.findIndex(s => s.id === editingServiceId);
+    if (idx !== -1) data.services[idx] = { id: editingServiceId, ...svcData };
+  } else {
+    data.services.push({ id: 's' + Date.now(), ...svcData });
+  }
+
+  saveData(data);
+  closeModal('serviceModal');
+  renderSettings();
+}
+
+function deleteService(id) {
+  const s = data.services.find(x => x.id === id);
+  if (!confirm(`Remove "${s?.name}" from your service menu?`)) return;
+  data.services = data.services.filter(x => x.id !== id);
+  saveData(data);
+  renderSettings();
+}
+
+// Pull service names for dropdowns throughout the app
+function getServiceOptions(selectedValue) {
+  const names = data.services.map(s => s.name);
+  return names.map(n => `<option value="${n}" ${n === selectedValue ? 'selected' : ''}>${n}</option>`).join('');
+}
+
+// Detect if a service is cut-related
+function isCutService(name) {
+  const cutKeywords = ['cut', 'trim', 'clipper', 'shear', 'buzz', 'fade', 'taper', 'undercut'];
+  return cutKeywords.some(k => name.toLowerCase().includes(k));
+}
+
+// Auto-fill price + duration when service is picked in appt modal
+function onApptServiceChange() {
+  const name = document.getElementById('aService').value;
+  const svc = data.services.find(s => s.name === name);
+  if (svc) {
+    if (svc.price && !document.getElementById('aPrice').value) document.getElementById('aPrice').value = svc.price;
+    if (svc.duration) document.getElementById('aDuration').value = svc.duration;
+  }
+  // Show clipper notes field only for cut services
+  const group = document.getElementById('toolNotesGroup');
+  if (group) group.style.display = isCutService(name) ? 'flex' : 'none';
+}
+
+// ── REVENUE FIELD SYNC ────────────────────────────────────────────
+function syncRevFields(changed) {
+  const priceEl = document.getElementById('aPrice');
+  const tipEl = document.getElementById('aTip');
+  const totalEl = document.getElementById('aTotal');
+  if (!priceEl || !tipEl || !totalEl) return;
+
+  const price = parseAmount(priceEl.value);
+  const tip = parseAmount(tipEl.value);
+  const total = parseAmount(totalEl.value);
+
+  if (changed === 'total') {
+    // Total entered → tip = total - price (only if price is set)
+    if (price > 0 && total >= price) {
+      const calcTip = total - price;
+      tipEl.value = calcTip > 0 ? formatMoney(calcTip) : '';
+    } else if (price === 0 && total > 0) {
+      // No price set yet, just leave tip blank
+      tipEl.value = '';
+    }
+  } else if (changed === 'tip') {
+    // Tip entered → total = price + tip
+    if (price > 0) {
+      totalEl.value = formatMoney(price + tip);
+    }
+  } else if (changed === 'price') {
+    // Price changed → recalc total if tip exists
+    if (tip > 0) {
+      totalEl.value = formatMoney(price + tip);
+    } else if (total > 0) {
+      // Recalc tip from existing total
+      const calcTip = total - price;
+      tipEl.value = calcTip > 0 ? formatMoney(calcTip) : '';
+    }
+  }
+}
+
+// ── REVENUE ───────────────────────────────────────────────────────
+let currentRevenuePeriod = 'week';
+let currentScheduleView = 'appointments';
+
+function switchScheduleView(view) {
+  currentScheduleView = view;
+  document.getElementById('scheduleApptView').style.display = view === 'appointments' ? 'block' : 'none';
+  document.getElementById('scheduleRevenueView').style.display = view === 'revenue' ? 'block' : 'none';
+  document.getElementById('toggleAppts').classList.toggle('active', view === 'appointments');
+  document.getElementById('toggleRevenue').classList.toggle('active', view === 'revenue');
+  if (view === 'revenue') renderRevenue();
+}
+
+function setRevenuePeriod(period) {
+  currentRevenuePeriod = period;
+  ['week','month','year','all'].forEach(p => {
+    document.getElementById(`revTab${p.charAt(0).toUpperCase()+p.slice(1)}`)?.classList.toggle('active', p === period);
+  });
+  renderRevenue();
+}
+
+// Parse a price string like "$120" or "120" → number
+function parseAmount(str) {
+  if (!str) return 0;
+  const n = parseFloat(str.replace(/[^0-9.]/g, ''));
+  return isNaN(n) ? 0 : n;
+}
+
+function formatMoney(n) {
+  return '$' + n.toFixed(2).replace(/\.00$/, '');
+}
+
+function getPeriodDates(period) {
+  const now = new Date();
+  const today = now.toISOString().split('T')[0];
+  let start;
+  if (period === 'week') {
+    const d = new Date(now);
+    d.setDate(now.getDate() - now.getDay());
+    start = d.toISOString().split('T')[0];
+  } else if (period === 'month') {
+    start = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-01`;
+  } else if (period === 'year') {
+    start = `${now.getFullYear()}-01-01`;
+  } else {
+    start = '2000-01-01';
+  }
+  return { start, end: today };
+}
+
+function renderRevenue() {
+  const today = new Date().toISOString().split('T')[0];
+
+  // Always calc today, this week, this month for summary cards
+  const todayAppts = data.appointments.filter(a => a.date === today && a.date <= today);
+  const weekDates = getPeriodDates('week');
+  const monthDates = getPeriodDates('month');
+
+  const sumAppts = appts => appts.reduce((t, a) => t + parseAmount(a.price) + parseAmount(a.tip), 0);
+  const countAppts = appts => appts.filter(a => parseAmount(a.price) > 0 || parseAmount(a.tip) > 0).length;
+
+  const todayTotal = sumAppts(todayAppts);
+  const weekAppts = data.appointments.filter(a => a.date >= weekDates.start && a.date <= today);
+  const weekTotal = sumAppts(weekAppts);
+  const monthAppts = data.appointments.filter(a => a.date >= monthDates.start && a.date <= today);
+  const monthTotal = sumAppts(monthAppts);
+
+  document.getElementById('revenueSummary').innerHTML = `
+    <div class="rev-summary-card today">
+      <div class="rev-summary-value">${formatMoney(todayTotal)}</div>
+      <div class="rev-summary-label">Today</div>
+      <div class="rev-summary-sub">${todayAppts.length} appointment${todayAppts.length !== 1 ? 's' : ''}</div>
+    </div>
+    <div class="rev-summary-card week">
+      <div class="rev-summary-value">${formatMoney(weekTotal)}</div>
+      <div class="rev-summary-label">This Week</div>
+      <div class="rev-summary-sub">${weekAppts.length} appointment${weekAppts.length !== 1 ? 's' : ''}</div>
+    </div>
+    <div class="rev-summary-card month highlight">
+      <div class="rev-summary-value">${formatMoney(monthTotal)}</div>
+      <div class="rev-summary-label">This Month</div>
+      <div class="rev-summary-sub">${monthAppts.length} appointment${monthAppts.length !== 1 ? 's' : ''}</div>
+    </div>`;
+
+  // Daily breakdown for selected period
+  const { start, end } = getPeriodDates(currentRevenuePeriod);
+  const periodAppts = data.appointments
+    .filter(a => a.date >= start && a.date <= end)
+    .sort((a,b) => (b.date+b.time).localeCompare(a.date+a.time));
+
+  const dailyList = document.getElementById('revenueDailyList');
+
+  if (!periodAppts.length) {
+    dailyList.innerHTML = `<div class="rev-empty"><div class="rev-empty-icon">💰</div><p>No completed appointments with prices in this period yet.</p></div>`;
+    return;
+  }
+
+  // Group by date
+  const byDate = {};
+  periodAppts.forEach(a => {
+    if (!byDate[a.date]) byDate[a.date] = [];
+    byDate[a.date].push(a);
+  });
+
+  dailyList.innerHTML = Object.entries(byDate).map(([date, appts]) => {
+    const dayTotal = sumAppts(appts);
+    const tipTotal = appts.reduce((t,a) => t + parseAmount(a.tip), 0);
+    const rows = appts.map(a => {
+      const client = data.clients.find(c => c.id === a.clientId);
+      const name = client ? client.name : 'Unknown';
+      const price = parseAmount(a.price);
+      const tip = parseAmount(a.tip);
+      const total = price + tip;
+      return `<div class="rev-appt-row">
+        <div class="rev-appt-left">
+          <div class="rev-appt-client">${name}</div>
+          <div class="rev-appt-service">${a.service} · ${formatTime(a.time)}</div>
+        </div>
+        <div class="rev-appt-right">
+          <div class="rev-appt-total">${total > 0 ? formatMoney(total) : '—'}${tip > 0 ? `<span class="rev-tip-badge">+${formatMoney(tip)} tip</span>` : ''}</div>
+          <div class="rev-appt-breakdown">${price > 0 ? `Service: ${formatMoney(price)}` : 'No price set'}
+            <button class="rev-add-tip" onclick="quickAddTip('${a.id}')">${tip > 0 ? '✎ tip' : '+ tip'}</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="rev-day-group">
+      <div class="rev-day-header">
+        <div class="rev-day-label">${formatDate(date)}</div>
+        <div class="rev-day-total">${formatMoney(dayTotal)}<span>${tipTotal > 0 ? `incl. ${formatMoney(tipTotal)} tips` : ''}</span></div>
+      </div>
+      ${rows}
+    </div>`;
+  }).join('');
+}
+
+function quickAddTip(apptId) {
+  const a = data.appointments.find(x => x.id === apptId);
+  if (!a) return;
+  const current = a.tip ? ` (current: ${a.tip})` : '';
+  const val = prompt(`Enter tip amount for this appointment${current}:`, a.tip || '');
+  if (val === null) return;
+  a.tip = val.trim();
+  saveData(data);
+  renderRevenue();
+}
+
+function exportRevenueCSV() {
+  const { start, end } = getPeriodDates(currentRevenuePeriod);
+  const periodAppts = data.appointments
+    .filter(a => a.date >= start && a.date <= end)
+    .sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
+
+  if (!periodAppts.length) {
+    alert('No appointments to export for this period.');
+    return;
+  }
+
+  const periodLabel = { week: 'This-Week', month: 'This-Month', year: 'This-Year', all: 'All-Time' }[currentRevenuePeriod];
+
+  const headers = ['Date', 'Client', 'Service', 'Time', 'Duration', 'Service Price', 'Tip', 'Total', 'Notes'];
+
+  const rows = periodAppts.map(a => {
+    const client = data.clients.find(c => c.id === a.clientId);
+    const name = client ? client.name : 'Unknown';
+    const price = parseAmount(a.price);
+    const tip = parseAmount(a.tip);
+    const total = price + tip;
+    // Escape fields that might contain commas or quotes
+    const esc = v => `"${String(v).replace(/"/g, '""')}"`;
+    return [
+      esc(formatDate(a.date)),
+      esc(name),
+      esc(a.service),
+      esc(formatTime(a.time)),
+      esc(formatDuration(a.duration)),
+      price > 0 ? price.toFixed(2) : '',
+      tip > 0 ? tip.toFixed(2) : '',
+      total > 0 ? total.toFixed(2) : '',
+      esc(a.notes || ''),
+    ].join(',');
+  });
+
+  // Add a totals row at the bottom
+  const totalRevenue = periodAppts.reduce((t,a) => t + parseAmount(a.price) + parseAmount(a.tip), 0);
+  const totalTips = periodAppts.reduce((t,a) => t + parseAmount(a.tip), 0);
+  const totalServices = periodAppts.reduce((t,a) => t + parseAmount(a.price), 0);
+  rows.push(''); // blank spacer row
+  rows.push(`"TOTAL","","","","",${totalServices.toFixed(2)},${totalTips.toFixed(2)},${totalRevenue.toFixed(2)},`);
+
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `Palette-Revenue-${periodLabel}-${new Date().toISOString().split('T')[0]}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 // ── MISC ──────────────────────────────────────────────────────────
 function handleSearch(val) { renderClientList(val); }
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function dismissOnboarding() {
+  document.getElementById('onboardingBanner').style.display = 'none';
+  localStorage.setItem('palette_onboarding_done', '1');
+}
+
+function initOnboarding() {
+  const done = localStorage.getItem('palette_onboarding_done');
+  const banner = document.getElementById('onboardingBanner');
+  if (!done && banner) banner.style.display = 'block';
+}
 
 document.querySelectorAll('.modal-overlay').forEach(o => {
   o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
@@ -1207,6 +1999,7 @@ document.querySelectorAll('.modal-overlay').forEach(o => {
 
 // ── INIT ──────────────────────────────────────────────────────────
 renderClientList();
+initOnboarding();
 </script>
 </body>
 </html>
