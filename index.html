@@ -264,6 +264,7 @@
   .bottom-tab-bar {
     position: fixed;
     bottom: 0; left: 0; right: 0;
+    width: 100%;
     height: var(--tab-h);
     background: var(--ink);
     display: flex;
@@ -271,20 +272,23 @@
     z-index: 200;
     padding-bottom: env(safe-area-inset-bottom);
     border-top: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
   }
 
   .tab-btn {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    gap: 4px; border: none; background: none;
+    gap: 3px; border: none; background: none;
     color: rgba(249,245,238,0.45);
-    font-family: 'DM Sans', sans-serif; font-size: 0.7rem;
-    cursor: pointer; transition: all 0.2s; padding: 8px 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.62rem;
+    cursor: pointer; transition: all 0.2s; padding: 6px 2px;
+    min-width: 0; overflow: hidden;
   }
   .tab-btn:hover { color: var(--cream); }
   .tab-btn.active { color: var(--gold); }
 
-  .tab-icon { font-size: 1.4rem; line-height: 1; }
+  .tab-icon { font-size: 1.2rem; line-height: 1; }
+  .tab-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; text-align: center; }
   .tab-label { font-size: 0.65rem; letter-spacing: 0.03em; }
 
   .tab-btn.tab-new {
@@ -1185,6 +1189,7 @@ if (!data.clients.length) {
   const lastWeek = new Date(today); lastWeek.setDate(today.getDate() - 5);
   const fmt = d => d.toISOString().split('T')[0];
   data = {
+    services: DEFAULT_SERVICES,
     clients: [
       { id: 'c1', name: 'Emma Hartley', natural: 'Medium Brown, Level 5', texture: 'Fine, slightly wavy', skin: 'Cool fair', allergies: 'None' },
       { id: 'c2', name: 'Lucia Moreno', natural: 'Dark Brown, Level 3', texture: 'Coarse, curly, virgin', skin: 'Warm olive', allergies: 'Sensitive scalp — avoid ammonia' },
