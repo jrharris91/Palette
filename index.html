@@ -688,17 +688,17 @@
   .rev-empty p { font-size: 0.85rem; max-width: 260px; margin: 0 auto; line-height: 1.6; }
 
   /* ── SETTINGS PAGE ── */
-  .settings-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
-  .settings-header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 4px; }
+  .settings-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .settings-header h1 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 4px; }
   .settings-header p { color: var(--muted); font-size: 0.85rem; }
 
-  .settings-section { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; }
+  .settings-section { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; width: 100%; }
 
-  .settings-section-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; border-bottom: 1px solid var(--border); gap: 12px; }
+  .settings-section-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px; border-bottom: 1px solid var(--border); gap: 12px; flex-wrap: wrap; }
   .settings-section-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
   .settings-section-sub { font-size: 0.78rem; color: var(--muted); }
 
-  .settings-category-tabs { display: flex; gap: 6px; padding: 14px 22px 0; flex-wrap: wrap; }
+  .settings-category-tabs { display: flex; gap: 6px; padding: 12px 16px 0; flex-wrap: wrap; }
 
   .cat-tab {
     padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border);
@@ -708,20 +708,20 @@
   .cat-tab:hover { border-color: var(--accent); color: var(--accent); }
   .cat-tab.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
-  .service-list { padding: 14px 22px 22px; display: flex; flex-direction: column; gap: 10px; }
+  .service-list { padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 10px; width: 100%; }
 
   .service-item {
-    display: flex; align-items: center; gap: 14px;
-    padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border);
-    background: var(--cream); transition: all 0.15s;
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
+    background: var(--cream); transition: all 0.15s; width: 100%; min-width: 0;
   }
   .service-item:hover { border-color: var(--accent-light); background: var(--warm-white); }
 
   .service-color-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
-  .service-item-info { flex: 1; min-width: 0; }
-  .service-item-name { font-weight: 600; font-size: 0.9rem; }
-  .service-item-meta { font-size: 0.75rem; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; }
+  .service-item-info { flex: 1; min-width: 0; overflow: hidden; }
+  .service-item-name { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .service-item-meta { font-size: 0.75rem; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   .service-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
 
