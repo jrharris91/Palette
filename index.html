@@ -574,6 +574,39 @@
   .sidebar-empty { padding: 8px 4px; }
   .sidebar-empty p { font-size: 0.78rem; color: var(--muted); font-style: italic; }
 
+  /* ── CONTACT BAR ── */
+  .contact-bar {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 10px; margin-bottom: 4px;
+  }
+  .contact-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 20px;
+    background: white; border: 1px solid var(--border);
+    font-size: 0.78rem; color: var(--ink); text-decoration: none;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .contact-chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+  .contact-chip-icon { font-size: 0.85rem; }
+
+  /* ── INLINE NEW CLIENT IN APPT MODAL ── */
+  .client-field-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .client-field-header label { margin-bottom: 0; }
+  .btn-inline-new {
+    background: none; border: 1px solid var(--border); border-radius: 20px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: var(--accent);
+    padding: 3px 10px; cursor: pointer; transition: all 0.15s;
+  }
+  .btn-inline-new:hover { background: var(--accent-light); border-color: var(--accent); }
+  .btn-inline-new.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* ── FIELD OPTIONAL LABEL ── */
+  .field-optional {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    color: var(--muted); font-weight: 400; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-left: 4px;
+  }
+
   /* ── LAST CUT CARD ── */
   .last-cut-card {
     background: white; border-radius: 14px; border: 1px solid var(--border);
@@ -891,11 +924,13 @@
           <div class="client-header-top">
             <h1 id="clientName">—</h1>
             <div class="client-header-actions">
-              <button class="btn-secondary" onclick="deleteClient()" title="Remove this client and all their records">Remove Client</button>
+              <button class="btn-secondary" onclick="openEditClientModal()" title="Edit client details">✎ Edit</button>
+              <button class="btn-secondary" onclick="deleteClient()" title="Remove this client and all their records">Remove</button>
               <button class="btn-primary" onclick="openNewFormulaModal()">+ Log Formula</button>
             </div>
           </div>
           <div class="client-tags" id="clientTags"></div>
+          <div id="clientContactBar"></div>
         </div>
         <div class="stats-row" id="statsRow"></div>
         <div id="lastCutCard"></div>
@@ -1097,7 +1132,17 @@
     <div class="modal-handle"></div>
     <div class="modal-title" id="apptModalTitle">New Appointment</div>
     <div class="form-grid">
-      <div class="form-group full"><label>Client</label><select id="aClient"></select></div>
+      <div class="form-group full">
+        <div class="client-field-header">
+          <label>Client</label>
+          <button type="button" class="btn-inline-new" id="toggleNewClientBtn" onclick="toggleInlineNewClient()">+ New Client</button>
+        </div>
+        <select id="aClient" style="display:block;"></select>
+        <div id="inlineNewClientFields" style="display:none;">
+          <input type="text" id="aNewClientName" placeholder="Client's full name" style="margin-bottom:8px;">
+          <input type="tel" id="aNewClientPhone" placeholder="Phone (optional)">
+        </div>
+      </div>
       <div class="form-group full"><label>Service</label>
         <select id="aService" onchange="onApptServiceChange()"></select>
       </div>
@@ -1134,9 +1179,12 @@
 <div class="modal-overlay" id="clientModal">
   <div class="modal">
     <div class="modal-handle"></div>
-    <div class="modal-title">New Client</div>
+    <div class="modal-title" id="clientModalTitle">New Client</div>
     <div class="form-grid">
       <div class="form-group full"><label>Full Name</label><input type="text" id="ncName" placeholder="e.g. Sarah Johnson"></div>
+      <div class="form-group full"><label>Phone <span class="field-optional">optional</span></label><input type="tel" id="ncPhone" placeholder="e.g. (555) 867-5309"></div>
+      <div class="form-group full"><label>Email <span class="field-optional">optional</span></label><input type="email" id="ncEmail" placeholder="e.g. sarah@email.com"></div>
+      <div class="form-group full"><label>Address <span class="field-optional">optional</span></label><input type="text" id="ncAddress" placeholder="e.g. 123 Main St, Nashville TN"></div>
       <div class="form-group full"><label>Natural Hair Color</label><input type="text" id="ncNatural" placeholder="e.g. Medium Brown, Level 5"></div>
       <div class="form-group full"><label>Hair Type / Texture</label><input type="text" id="ncTexture" placeholder="e.g. Fine, straight, color-treated"></div>
       <div class="form-group full"><label>Skin Tone</label><input type="text" id="ncSkin" placeholder="e.g. Warm olive, golden undertones"></div>
@@ -1144,7 +1192,7 @@
     </div>
     <div class="modal-actions">
       <button class="btn-secondary" onclick="closeModal('clientModal')">Cancel</button>
-      <button class="btn-primary" onclick="saveClient()">Add Client</button>
+      <button class="btn-primary" id="clientSaveBtn" onclick="saveClient()">Add Client</button>
     </div>
   </div>
 </div>
@@ -1359,6 +1407,21 @@ function selectClient(id) {
   if (client.allergies && client.allergies.toLowerCase() !== 'none') tags.push(`<span class="tag tag-allergy">⚠ ${client.allergies}</span>`);
   document.getElementById('clientTags').innerHTML = tags.join('');
 
+  // Contact bar
+  const contacts = [];
+  if (client.phone) contacts.push(`<a class="contact-chip" href="tel:${client.phone}"><span class="contact-chip-icon">📞</span>${client.phone}</a>`);
+  if (client.email) contacts.push(`<a class="contact-chip" href="mailto:${client.email}"><span class="contact-chip-icon">✉️</span>${client.email}</a>`);
+  if (client.address) {
+    const encoded = encodeURIComponent(client.address);
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const mapsUrl = isIOS
+      ? `https://maps.apple.com/?q=${encoded}`
+      : `https://www.google.com/maps/search/?api=1&query=${encoded}`;
+    contacts.push(`<a class="contact-chip" href="${mapsUrl}" target="_blank"><span class="contact-chip-icon">📍</span>${client.address}</a>`);
+  }
+  document.getElementById('clientContactBar').innerHTML = contacts.length
+    ? `<div class="contact-bar">${contacts.join('')}</div>` : '';
+
   renderStats(id);
   renderLastCutCard(id);
   renderFormulas(id);
@@ -1522,6 +1585,18 @@ function populateApptClientDropdown(selectedId) {
     : '<option value="">— Add a client first —</option>';
 }
 
+let inlineNewClient = false;
+
+function toggleInlineNewClient() {
+  inlineNewClient = !inlineNewClient;
+  document.getElementById('aClient').style.display = inlineNewClient ? 'none' : 'block';
+  document.getElementById('inlineNewClientFields').style.display = inlineNewClient ? 'block' : 'none';
+  const btn = document.getElementById('toggleNewClientBtn');
+  btn.textContent = inlineNewClient ? '← Existing Client' : '+ New Client';
+  btn.classList.toggle('active', inlineNewClient);
+  if (inlineNewClient) document.getElementById('aNewClientName').focus();
+}
+
 function openNewApptModal() {
   editingApptId = null;
   document.getElementById('apptModalTitle').textContent = 'New Appointment';
@@ -1531,6 +1606,14 @@ function openNewApptModal() {
   document.getElementById('aDate').value = new Date().toISOString().split('T')[0];
   document.getElementById('aTime').value = '10:00';
   document.getElementById('aDuration').value = '60';
+  // Reset inline new client
+  inlineNewClient = false;
+  document.getElementById('aClient').style.display = 'block';
+  document.getElementById('inlineNewClientFields').style.display = 'none';
+  document.getElementById('toggleNewClientBtn').textContent = '+ New Client';
+  document.getElementById('toggleNewClientBtn').classList.remove('active');
+  document.getElementById('aNewClientName').value = '';
+  document.getElementById('aNewClientPhone').value = '';
   document.getElementById('aPrice').value = '';
   document.getElementById('aTip').value = '';
   document.getElementById('aTotal').value = '';
@@ -1565,7 +1648,23 @@ function openEditApptModal(id) {
 }
 
 function saveAppt() {
-  const clientId = document.getElementById('aClient').value;
+  let clientId;
+
+  // Handle inline new client creation
+  if (inlineNewClient) {
+    const newName = document.getElementById('aNewClientName').value.trim();
+    if (!newName) { alert('Please enter the new client\'s name.'); return; }
+    const newClient = {
+      id: 'c' + Date.now(), name: newName,
+      phone: document.getElementById('aNewClientPhone').value.trim(),
+      email: '', address: '', natural: '', texture: '', skin: '', allergies: ''
+    };
+    data.clients.push(newClient);
+    clientId = newClient.id;
+  } else {
+    clientId = document.getElementById('aClient').value;
+  }
+
   const date = document.getElementById('aDate').value;
   const time = document.getElementById('aTime').value;
   if (!clientId || !date || !time) { alert('Please select a client, date, and time.'); return; }
@@ -1582,12 +1681,14 @@ function saveAppt() {
     if (idx !== -1) data.appointments[idx] = { id: editingApptId, ...apptData };
     saveData(data); closeModal('apptModal'); renderAppointments();
     if (activeClientId) renderLastCutCard(activeClientId);
+    if (inlineNewClient) { renderClientList(); inlineNewClient = false; }
     if (confirm('Appointment updated! Re-export to Apple Calendar?')) downloadICS(editingApptId);
   } else {
     const appt = { id: 'a' + Date.now(), ...apptData };
     data.appointments.push(appt);
     saveData(data); closeModal('apptModal'); renderAppointments();
     if (activeClientId) renderLastCutCard(activeClientId);
+    if (inlineNewClient) { renderClientList(); inlineNewClient = false; }
     downloadICS(appt.id);
   }
 }
@@ -1642,21 +1743,68 @@ function saveFormula() {
 
 // ── CLIENT MODAL ──────────────────────────────────────────────────
 function openNewClientModal() {
-  ['ncName','ncNatural','ncTexture','ncSkin','ncAllergies'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('clientModalTitle').textContent = 'New Client';
+  document.getElementById('clientSaveBtn').textContent = 'Add Client';
+  document.getElementById('ncName').value = '';
+  document.getElementById('ncPhone').value = '';
+  document.getElementById('ncEmail').value = '';
+  document.getElementById('ncAddress').value = '';
+  document.getElementById('ncNatural').value = '';
+  document.getElementById('ncTexture').value = '';
+  document.getElementById('ncSkin').value = '';
+  document.getElementById('ncAllergies').value = '';
+  openModal('clientModal');
+}
+
+function openEditClientModal() {
+  if (!activeClientId) return;
+  const client = data.clients.find(c => c.id === activeClientId);
+  if (!client) return;
+  document.getElementById('clientModalTitle').textContent = 'Edit Client';
+  document.getElementById('clientSaveBtn').textContent = 'Save Changes';
+  document.getElementById('ncName').value = client.name || '';
+  document.getElementById('ncPhone').value = client.phone || '';
+  document.getElementById('ncEmail').value = client.email || '';
+  document.getElementById('ncAddress').value = client.address || '';
+  document.getElementById('ncNatural').value = client.natural || '';
+  document.getElementById('ncTexture').value = client.texture || '';
+  document.getElementById('ncSkin').value = client.skin || '';
+  document.getElementById('ncAllergies').value = client.allergies || '';
   openModal('clientModal');
 }
 
 function saveClient() {
   const name = document.getElementById('ncName').value.trim();
-  if (!name) return;
-  const client = { id: 'c' + Date.now(), name,
+  if (!name) { alert('Please enter a client name.'); return; }
+
+  const isEditing = document.getElementById('clientModalTitle').textContent === 'Edit Client';
+
+  const clientData = {
+    name,
+    phone: document.getElementById('ncPhone').value.trim(),
+    email: document.getElementById('ncEmail').value.trim(),
+    address: document.getElementById('ncAddress').value.trim(),
     natural: document.getElementById('ncNatural').value.trim(),
     texture: document.getElementById('ncTexture').value.trim(),
     skin: document.getElementById('ncSkin').value.trim(),
-    allergies: document.getElementById('ncAllergies').value.trim() };
-  data.clients.push(client);
-  saveData(data); closeModal('clientModal');
-  renderClientList(); selectClient(client.id);
+    allergies: document.getElementById('ncAllergies').value.trim()
+  };
+
+  if (isEditing && activeClientId) {
+    const idx = data.clients.findIndex(c => c.id === activeClientId);
+    if (idx !== -1) data.clients[idx] = { id: activeClientId, ...clientData };
+    saveData(data);
+    closeModal('clientModal');
+    selectClient(activeClientId);
+    renderClientList();
+  } else {
+    const client = { id: 'c' + Date.now(), ...clientData };
+    data.clients.push(client);
+    saveData(data);
+    closeModal('clientModal');
+    renderClientList();
+    selectClient(client.id);
+  }
 }
 
 function deleteClient() {
