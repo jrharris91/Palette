@@ -320,6 +320,9 @@
   .drill-table .drill-total td { font-weight: 700; background: var(--cream); border-top: 2px solid var(--border); }
   .modal-wide { max-width: 600px; width: 95%; }
 
+  .client-modal-actions { flex-direction: column; gap: 10px; }
+  .client-save-btn { width: 100%; justify-content: center; font-size: 1rem; padding: 14px; }
+
   /* ── REPORTS PAGE ── */
   .report-period-row {
     display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
@@ -1636,9 +1639,9 @@
       <div class="form-group full"><label>Skin Tone</label><input type="text" id="ncSkin" placeholder="e.g. Warm olive, golden undertones"></div>
       <div class="form-group full"><label>Allergies / Sensitivities</label><input type="text" id="ncAllergies" placeholder="e.g. PPD allergy, sensitive scalp"></div>
     </div>
-    <div class="modal-actions">
+    <div class="modal-actions client-modal-actions">
+      <button class="btn-primary client-save-btn" id="clientSaveBtn" onclick="saveClient()">Add Client</button>
       <button class="btn-secondary" onclick="closeModal('clientModal')">Cancel</button>
-      <button class="btn-primary" id="clientSaveBtn" onclick="saveClient()">Add Client</button>
     </div>
   </div>
 </div>
@@ -3576,14 +3579,15 @@ function initOnboarding() {
 }
 
 document.querySelectorAll('.modal-overlay').forEach(o => {
+  if (o.id === 'clientModal') return; // client modal requires explicit save or cancel
   o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
 });
 
-// Swipe down to dismiss modals on mobile
+// Swipe down to dismiss modals on mobile (not client modal — must use Save button)
 document.querySelectorAll('.modal').forEach(modal => {
+  if (modal.closest('#clientModal')) return; // client modal requires explicit save
   let startY = 0, isDragging = false;
   modal.addEventListener('touchstart', e => {
-    // Only allow swipe from top 60px (handle area)
     if (e.touches[0].clientY - modal.getBoundingClientRect().top > 60) return;
     startY = e.touches[0].clientY;
     isDragging = true;
