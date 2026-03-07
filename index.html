@@ -710,7 +710,8 @@
   .modal {
     background: var(--warm-white); border-radius: 20px 20px 0 0;
     padding: 24px 22px; width: 100%; max-width: 560px;
-    max-height: 92vh; overflow-y: auto;
+    max-height: calc(92vh - env(safe-area-inset-top));
+    overflow-y: auto;
     box-shadow: var(--shadow-lg); animation: modalUp 0.28s cubic-bezier(0.4,0,0.2,1);
     padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
@@ -3545,6 +3546,35 @@ function initOnboarding() {
 
 document.querySelectorAll('.modal-overlay').forEach(o => {
   o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+});
+
+// Swipe down to dismiss modals on mobile
+document.querySelectorAll('.modal').forEach(modal => {
+  let startY = 0, isDragging = false;
+  modal.addEventListener('touchstart', e => {
+    // Only allow swipe from top 60px (handle area)
+    if (e.touches[0].clientY - modal.getBoundingClientRect().top > 60) return;
+    startY = e.touches[0].clientY;
+    isDragging = true;
+    modal.style.transition = 'none';
+  }, { passive: true });
+  modal.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    const dy = e.touches[0].clientY - startY;
+    if (dy > 0) modal.style.transform = `translateY(${dy}px)`;
+  }, { passive: true });
+  modal.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    modal.style.transition = '';
+    const dy = e.changedTouches[0].clientY - startY;
+    if (dy > 80) {
+      modal.style.transform = '';
+      modal.closest('.modal-overlay')?.classList.remove('open');
+    } else {
+      modal.style.transform = '';
+    }
+  });
 });
 
 // ── INIT ──────────────────────────────────────────────────────────
