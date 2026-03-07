@@ -2543,7 +2543,10 @@ function saveFormula() {
 }
 
 // ── CLIENT MODAL ──────────────────────────────────────────────────
+let editingClientId = null;
+
 function openNewClientModal() {
+  editingClientId = null;
   document.getElementById('clientModalTitle').textContent = 'New Client';
   document.getElementById('clientSaveBtn').textContent = 'Add Client';
   document.getElementById('ncName').value = '';
@@ -2561,6 +2564,7 @@ function openEditClientModal() {
   if (!activeClientId) return;
   const client = data.clients.find(c => c.id === activeClientId);
   if (!client) return;
+  editingClientId = activeClientId;
   document.getElementById('clientModalTitle').textContent = 'Edit Client';
   document.getElementById('clientSaveBtn').textContent = 'Save Changes';
   document.getElementById('ncName').value = client.name || '';
@@ -2578,8 +2582,6 @@ function saveClient() {
   const name = document.getElementById('ncName').value.trim();
   if (!name) { alert('Please enter a client name.'); return; }
 
-  const isEditing = document.getElementById('clientModalTitle').textContent === 'Edit Client';
-
   const clientData = {
     name,
     phone: document.getElementById('ncPhone').value.trim(),
@@ -2591,11 +2593,14 @@ function saveClient() {
     allergies: document.getElementById('ncAllergies').value.trim()
   };
 
-  if (isEditing && activeClientId) {
-    const idx = data.clients.findIndex(c => c.id === activeClientId);
-    if (idx !== -1) data.clients[idx] = { id: activeClientId, ...clientData };
+  if (editingClientId) {
+    const idx = data.clients.findIndex(c => c.id === editingClientId);
+    if (idx !== -1) {
+      data.clients[idx] = { ...data.clients[idx], ...clientData };
+    }
     saveData(data);
     closeModal('clientModal');
+    editingClientId = null;
     selectClient(activeClientId);
     renderClientList();
   } else {
