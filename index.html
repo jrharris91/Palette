@@ -222,13 +222,13 @@
     .form-grid { grid-template-columns: 1fr; }
     .form-group.full { grid-column: 1; }
 
-    /* Revenue summary — 3 small cards */
-    .revenue-summary { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    /* Earnings summary — 3 small cards */
+    .earnings-summary { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .rev-summary-value { font-size: 1.1rem; }
     .rev-summary-card { padding: 12px 10px; }
 
-    /* Revenue period tabs — wrap and shrink */
-    .revenue-period-tabs { gap: 4px; }
+    /* Earnings period tabs — wrap and shrink */
+    .earnings-period-tabs { gap: 4px; }
     .rev-tab { padding: 5px 10px; font-size: 0.72rem; }
     .rev-tab.rev-export-btn { margin-left: 0; width: 100%; margin-top: 4px; text-align: center; }
 
@@ -244,7 +244,7 @@
     /* Schedule header */
     .appt-page-header { flex-wrap: wrap; gap: 10px; }
 
-    /* Revenue appointment rows */
+    /* Earnings appointment rows */
     .rev-appt-row { flex-wrap: wrap; gap: 8px; }
     .rev-appt-breakdown { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 
@@ -651,7 +651,7 @@
   .schedule-toggle-btn:hover:not(.active) { color: var(--ink); }
 
   /* ── REVENUE SUMMARY CARDS ── */
-  .revenue-summary {
+  .earnings-summary {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
   }
   .rev-summary-card {
@@ -670,7 +670,7 @@
   .rev-summary-card.highlight .rev-summary-sub { color: rgba(249,245,238,0.5); }
 
   /* ── REVENUE PERIOD TABS ── */
-  .revenue-period-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .earnings-period-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
   .rev-tab {
     padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
     background: none; font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
@@ -945,7 +945,7 @@
       <div class="appt-page-header">
         <div>
           <h1>Schedule</h1>
-          <p>Appointments & revenue tracking</p>
+          <p>Appointments & earnings tracking</p>
         </div>
         <button class="btn-primary" onclick="openNewApptModal()">+ New</button>
       </div>
@@ -953,7 +953,7 @@
       <!-- VIEW TOGGLE -->
       <div class="schedule-toggle">
         <button class="schedule-toggle-btn active" id="toggleAppts" onclick="switchScheduleView('appointments')">📅 Appointments</button>
-        <button class="schedule-toggle-btn" id="toggleRevenue" onclick="switchScheduleView('revenue')">💰 Revenue</button>
+        <button class="schedule-toggle-btn" id="toggleEarnings" onclick="switchScheduleView('earnings')">💰 Earnings</button>
       </div>
 
       <!-- APPOINTMENTS VIEW -->
@@ -974,16 +974,16 @@
       </div>
 
       <!-- REVENUE VIEW -->
-      <div id="scheduleRevenueView" style="display:none;">
-        <div class="revenue-summary" id="revenueSummary"></div>
-        <div class="revenue-period-tabs">
-          <button class="rev-tab active" id="revTabWeek" onclick="setRevenuePeriod('week')">This Week</button>
-          <button class="rev-tab" id="revTabMonth" onclick="setRevenuePeriod('month')">This Month</button>
-          <button class="rev-tab" id="revTabYear" onclick="setRevenuePeriod('year')">This Year</button>
-          <button class="rev-tab" id="revTabAll" onclick="setRevenuePeriod('all')">All Time</button>
-          <button class="rev-tab rev-export-btn" onclick="exportRevenueCSV()">⬇ Export CSV</button>
+      <div id="scheduleEarningsView" style="display:none;">
+        <div class="earnings-summary" id="earningsSummary"></div>
+        <div class="earnings-period-tabs">
+          <button class="rev-tab active" id="revTabWeek" onclick="setEarningsPeriod('week')">This Week</button>
+          <button class="rev-tab" id="revTabMonth" onclick="setEarningsPeriod('month')">This Month</button>
+          <button class="rev-tab" id="revTabYear" onclick="setEarningsPeriod('year')">This Year</button>
+          <button class="rev-tab" id="revTabAll" onclick="setEarningsPeriod('all')">All Time</button>
+          <button class="rev-tab rev-export-btn" onclick="exportEarningsCSV()">⬇ Export CSV</button>
         </div>
-        <div id="revenueDailyList"></div>
+        <div id="earningsDailyList"></div>
       </div>
     </div>
 
@@ -1985,24 +1985,24 @@ function syncRevFields(changed) {
 }
 
 // ── REVENUE ───────────────────────────────────────────────────────
-let currentRevenuePeriod = 'week';
+let currentEarningsPeriod = 'week';
 let currentScheduleView = 'appointments';
 
 function switchScheduleView(view) {
   currentScheduleView = view;
   document.getElementById('scheduleApptView').style.display = view === 'appointments' ? 'block' : 'none';
-  document.getElementById('scheduleRevenueView').style.display = view === 'revenue' ? 'block' : 'none';
+  document.getElementById('scheduleEarningsView').style.display = view === 'earnings' ? 'block' : 'none';
   document.getElementById('toggleAppts').classList.toggle('active', view === 'appointments');
-  document.getElementById('toggleRevenue').classList.toggle('active', view === 'revenue');
-  if (view === 'revenue') renderRevenue();
+  document.getElementById('toggleEarnings').classList.toggle('active', view === 'earnings');
+  if (view === 'earnings') renderEarnings();
 }
 
-function setRevenuePeriod(period) {
-  currentRevenuePeriod = period;
+function setEarningsPeriod(period) {
+  currentEarningsPeriod = period;
   ['week','month','year','all'].forEach(p => {
     document.getElementById(`revTab${p.charAt(0).toUpperCase()+p.slice(1)}`)?.classList.toggle('active', p === period);
   });
-  renderRevenue();
+  renderEarnings();
 }
 
 // Parse a price string like "$120" or "120" → number
@@ -2034,7 +2034,7 @@ function getPeriodDates(period) {
   return { start, end: today };
 }
 
-function renderRevenue() {
+function renderEarnings() {
   const today = new Date().toISOString().split('T')[0];
 
   // Always calc today, this week, this month for summary cards
@@ -2051,7 +2051,7 @@ function renderRevenue() {
   const monthAppts = data.appointments.filter(a => a.date >= monthDates.start && a.date <= today);
   const monthTotal = sumAppts(monthAppts);
 
-  document.getElementById('revenueSummary').innerHTML = `
+  document.getElementById('earningsSummary').innerHTML = `
     <div class="rev-summary-card today">
       <div class="rev-summary-value">${formatMoney(todayTotal)}</div>
       <div class="rev-summary-label">Today</div>
@@ -2069,12 +2069,12 @@ function renderRevenue() {
     </div>`;
 
   // Daily breakdown for selected period
-  const { start, end } = getPeriodDates(currentRevenuePeriod);
+  const { start, end } = getPeriodDates(currentEarningsPeriod);
   const periodAppts = data.appointments
     .filter(a => a.date >= start && a.date <= end)
     .sort((a,b) => (b.date+b.time).localeCompare(a.date+a.time));
 
-  const dailyList = document.getElementById('revenueDailyList');
+  const dailyList = document.getElementById('earningsDailyList');
 
   if (!periodAppts.length) {
     dailyList.innerHTML = `<div class="rev-empty"><div class="rev-empty-icon">💰</div><p>No completed appointments with prices in this period yet.</p></div>`;
@@ -2129,11 +2129,11 @@ function quickAddTip(apptId) {
   if (val === null) return;
   a.tip = val.trim();
   saveData(data);
-  renderRevenue();
+  renderEarnings();
 }
 
-function exportRevenueCSV() {
-  const { start, end } = getPeriodDates(currentRevenuePeriod);
+function exportEarningsCSV() {
+  const { start, end } = getPeriodDates(currentEarningsPeriod);
   const periodAppts = data.appointments
     .filter(a => a.date >= start && a.date <= end)
     .sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
@@ -2143,7 +2143,7 @@ function exportRevenueCSV() {
     return;
   }
 
-  const periodLabel = { week: 'This-Week', month: 'This-Month', year: 'This-Year', all: 'All-Time' }[currentRevenuePeriod];
+  const periodLabel = { week: 'This-Week', month: 'This-Month', year: 'This-Year', all: 'All-Time' }[currentEarningsPeriod];
 
   const headers = ['Date', 'Client', 'Service', 'Time', 'Duration', 'Service Price', 'Tip', 'Total', 'Notes'];
 
@@ -2169,18 +2169,18 @@ function exportRevenueCSV() {
   });
 
   // Add a totals row at the bottom
-  const totalRevenue = periodAppts.reduce((t,a) => t + parseAmount(a.price) + parseAmount(a.tip), 0);
+  const totalEarnings = periodAppts.reduce((t,a) => t + parseAmount(a.price) + parseAmount(a.tip), 0);
   const totalTips = periodAppts.reduce((t,a) => t + parseAmount(a.tip), 0);
   const totalServices = periodAppts.reduce((t,a) => t + parseAmount(a.price), 0);
   rows.push(''); // blank spacer row
-  rows.push(`"TOTAL","","","","",${totalServices.toFixed(2)},${totalTips.toFixed(2)},${totalRevenue.toFixed(2)},`);
+  rows.push(`"TOTAL","","","","",${totalServices.toFixed(2)},${totalTips.toFixed(2)},${totalEarnings.toFixed(2)},`);
 
   const csv = [headers.join(','), ...rows].join('\n');
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = `Palette-Revenue-${periodLabel}-${new Date().toISOString().split('T')[0]}.csv`;
+  link.download = `Palette-Earnings-${periodLabel}-${new Date().toISOString().split('T')[0]}.csv`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
