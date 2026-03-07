@@ -1617,9 +1617,9 @@
         <textarea id="aToolNotes" placeholder="e.g. #2 sides, #4 on top, blended with shears. Texturizing on ends..."></textarea>
       </div>
     </div>
-    <div class="modal-actions">
+    <div class="modal-actions client-modal-actions">
+      <button class="btn-primary client-save-btn" id="apptSaveBtn" onclick="saveAppt()">Save & Export to Calendar</button>
       <button class="btn-secondary" onclick="closeModal('apptModal')">Cancel</button>
-      <button class="btn-primary" id="apptSaveBtn" onclick="saveAppt()">Save & Export to Calendar</button>
     </div>
   </div>
 </div>
@@ -3579,13 +3579,13 @@ function initOnboarding() {
 }
 
 document.querySelectorAll('.modal-overlay').forEach(o => {
-  if (o.id === 'clientModal') return; // client modal requires explicit save or cancel
+  if (o.id === 'clientModal' || o.id === 'apptModal') return;
   o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
 });
 
-// Swipe down to dismiss modals on mobile (not client modal — must use Save button)
+// Swipe down to dismiss modals on mobile (not client/appt modals — must use Save button)
 document.querySelectorAll('.modal').forEach(modal => {
-  if (modal.closest('#clientModal')) return; // client modal requires explicit save
+  if (modal.closest('#clientModal') || modal.closest('#apptModal')) return;
   let startY = 0, isDragging = false;
   modal.addEventListener('touchstart', e => {
     if (e.touches[0].clientY - modal.getBoundingClientRect().top > 60) return;
