@@ -468,14 +468,13 @@
     position: fixed;
     bottom: 0; left: 0; right: 0;
     width: 100%;
-    height: var(--tab-h);
+    height: calc(var(--tab-h) + env(safe-area-inset-bottom));
     background: var(--ink);
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
     z-index: 200;
     padding-bottom: env(safe-area-inset-bottom);
     border-top: 1px solid rgba(255,255,255,0.08);
-    overflow: hidden;
   }
 
   .tab-btn {
@@ -485,7 +484,7 @@
     color: rgba(249,245,238,0.45);
     font-family: 'DM Sans', sans-serif; font-size: 0.62rem;
     cursor: pointer; transition: all 0.2s; padding: 6px 2px;
-    min-width: 0; overflow: hidden;
+    min-width: 0; height: var(--tab-h);
   }
   .tab-btn:hover { color: var(--cream); }
   .tab-btn.active { color: var(--gold); }
