@@ -3,6 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- PWA / Add to Home Screen -->
+<meta name="application-name" content="Palette">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Palette">
+<meta name="theme-color" content="#F9F5EE">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACoUlEQVR42u3dMU7DQBCGUR+BhoZr0XESjsRV6DkHHUU60oEQGEeyvf/MPukrU6zwk6Wws5vl8vEu/driTyA4BIfgEByCQ3AIDsEhOASHBIfgEByCQ3AIDsEhOASH4JDgEByCQ3AIDsEhOASH4BAcEhyCQ3AIDsEhOASH4Di+h/u7723/5DnBMRjElgczREYnH0sbFj+ezUAZbYgs/WREBQcZPX3AgUhBHJ1kFPUBBx9w8AEHHP1xdJVRywccfMDBBxw7Pjk44LjhOc3mY3Ycw9cGRyKOkBXCkYUjbZ1wpOAIXCocEThiVwvHYBzJC4ZjJI7wNcPR/+tiMx9wwDExjiorhwMOOCbG0ckHHHDAUWH9cMABBxxwwAEHHHDAAQccfMDhzQEHHHDAAQcccMABBxxwwGFXFg444CADDjhMn5s+hwMOOJx4g8NZWTicsocjAof7OeBwsw8c7gSDw22CcIzB4R5SONxgDEfNu89fn5/ggOOrK4i/gmNqHCsyonzAEScjxwcciTJCfMARKiPBBxxwGBMMCA444IDjeBnDfcDhzQEHHHDAAQcccLTbGfcfUjh28GFvZUYcW3zYlZ0Xx7oP8xzT4Xh7eVyBYhJsLhxXDeuZIZ0Rx78sqhCBYxiLfCJwjJcR6wOOCBmZPuBIkRHoA44gGWk+4IADjiIyonzAAQccdWTk+IADDjjggAMOOOCYGMcl/hbHQ2WE+IDDmwMOOOCAYwocl/ifIoADDjja+Sg042Nv5VQfVUYD4TiVSPisuXmOs6EMP60Eh8yQyvQ5HM6twFHDhxNviDgrK6fsdauVcmuGQ3AIDsEhOASH4BAcgkNwCA4JDsEhOASH4BAcgkNwCA7BIcEhOASH4BAcgkNwCA7BITgkOASH4NCefQLlWflCmi+vMAAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" sizes="167x167" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKcAAACnCAIAAAD7dNu7AAACWklEQVR42u3cPU7DQBCAUR8hDU2uRcdJOBJXSc856CjoiESJiCLinR/Pk74SiZWfLYF31tvX54emtbkE1EVd1EVd1EVd1EVd1EVd1EVd1EVd1EVd1EWduqiLuqiLuqiLuqiLuqiLuqiLuqiLuqirv/r56fTT/T+5LuoR0nde/QDvY9hvTb1/X/1g8tbwW3fyClEfR94RnvpE+A35QHjqE+GpT4SnPhF+Qz4QnvpEeOqndb+aehX14MVQT1bPWhL1HPXchVGPVi+yPOpx6nVWSD1IvdoiqS9XL7hO6u3/WaJOvR/80dQrr5Y6deo9X4T1hadOnfriNVOnTp06derUqVOnTj39snaEp+5Zp06dOnXq1KlTp07dnht16tTN0lCnTt2MLHXz8NSdfaHunBt1Z1qpO78+Xt23Kuaq+y7NXPXcb1BdXl+op6lHfm/uKv1X1JPV48nT4annkOfCU08jT4SnnkmeBU+duv31h6NOnfoA9X+Qp8BT96xTp06dOnXq1HeC927uOJvZ3sMPHWGw5zZ0cMX++gj197fnG3eAWZqDqF+Zb1dwaI76Qu/K9tTXete0px5EXgqeehx5HXjqoeRF4KlTp76evAI8derUQ8jT4alTp06dOvUG8F3+lKNeXX0ReS48dc86deq94Fu8i6VOnfpj8PU3WKnvDF95fsZ7+P3ta07JUd//Dkicera/Pi7q4M3NgTcjC948PHtnX+bZO+c24iZosU7qE6NOXdRFXdRFXdRFXdRFXdRFXdRFXdRFXdRFXdSpi7qoi7qoi7qoi7qoi7qoa3XfZ1FuxvCZKi0AAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="152x152" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAACYCAIAAACXoLd2AAACH0lEQVR42u3cMU7DQBBA0T0CDU2uRcdJOBJXSc850lGkI1IaJERkZ+3dmfGTfonEyk8OwTvrdv2+qEDNJQApkAIpkCAFUiAFEqRACqRACiRIgRRIgQQpkAIpkCAFUiAFUiBBCqRACiRIgdyo0+vLvYU/tkcge/GWXNldCdNxtkSKvy/rMMUsli2X4txAVlAMbtko1rAEWcQSZBFLkEUsG8UaliBBJoTc4zeCHAE5ZgEgL3E+8UCGg5yyGJDh/lyBnAw5fVUgI37dADkBMs7aQII8PGSo5YGM+6U/iyVIkCBBJoJcu0iQIEGCBAkSJMhskCksQbojQYIECRIkSJCetYIECRKkCQETAmZ2zOyABGmuFaRJc2c/nP1wGguk85EgnVj2DoEB7xA4f7yDTNzN728g0xNO5AS5i+J4S5Agjwq5UHGwpf3I1YEECTIM5CrFkZYg3ZEgQYIEGeJptf8jQYIMtn/kWWsRyAecdj8SQH59vv0naj8yNORN7nERxgNA9irGsQTZRRiHE+Q2itMtQW6mONcSJMiKkJ2KEy1Bbqw4yxIkSJAgQYIEGRKyxzKs4hRLkO5IkCBBFoS8hnkXCsjRltE2PUA+YxlhJ9mz1l7LCLMddj+eRB0/XgWySCYEDm156JmdGpym6CpYmmvN6hpzYSCLBBKkQAqkQIIUSIEUSJACKZACKZAgBVIgBRKkQAqkQIIUSIEUSIEEqbj9AOxRiEi4RvepAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAC2ElEQVR42u3dsU0DMQCF4RuBhoa16JiEkViFnjnoKOigShFEFB1H/J79SX+Zwo4/XZGzne3z413a3eYrEEACSAAJIAkgASSABJAEkAASQAJIAkgACSABJAEkgASQABJAEkACSAAJIAkgASSABJAEkAASQAJIAkgACSABJIAkgASQALp5D/d3p67/5JAASkRzzWoNpzMxo20+Oj9XKwrQZIa2ifWcVisN0EyGtrn1hAcQPasbAoih2QHNrafdEEAMAcQQQAABRM+KhgBiCKBbrStDAB28hAABdMzKLWsIoCMXDKBFAWUOGKACQMnDBigdUP7IAcoFVDF4gEIBFY0foDhAXVMACCCAJgLUOAuAUgCVTgQggAACiCGAAAIIIIBWBfSX6QAEEEAAAQQQQAABBBBAAAHEEED0AAQQQAABBBBAAAEEEEAAeRsPEEAAAQQQQPZEAwQQQM6FORfmZCo9AAEEkNs5AIoA5H4ggNxQBtBoQO5IBMgtrQAFAHJPNEBuqgcoAJD/ygBoqn/reX1+AmgSQDfrG81vAQTQTjqxjAAq05NmCKA+PVGGAAIIoPX05BgCCCCAyn+gAwgggABq0xNiCCBPIIAAAggggAACCKAeQ36JBggggAYZ8jYeoP2G7AcCaCcjOxIBOu/t5fEyJnuiAToXc7miIxkABbkplQRQqJ4WQwDl6qkwBFAunQpGAAEEUCSgA/UkGwKoQ0+sIYBq9GQaAggggAACaBpA/6on0BBAAAEEEEAAAQQQQFMbmkNPmiGAPIEAAggggACKNtT+GhUggACqNdS7j8y7sPGG6jZBAxRkqHEXPUARjMJPD9qRmIgp7cyyPdFyKgMggABamZGTqXI2XiMMVcwLoDhJXdMBaLyn6vEDJIAEkAASQBJAAkgACSAJIAEkgASQBJAAEkACSAJIAAkgASSAJIAEkAASQBJAAkgACSAJIAEkgASQBJAAUkJfTmH4E8XHYPcAAAAASUVORK5CYII=">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIlBhbGV0dGUgXHUyMDE0IENvbG9yIEZvcm11bGEgU3R1ZGlvIiwgInNob3J0X25hbWUiOiAiUGFsZXR0ZSIsICJkZXNjcmlwdGlvbiI6ICJDb2xvciBmb3JtdWxhIHRyYWNrZXIgYW5kIGNsaWVudCBtYW5hZ2VyIGZvciBoYWlyIHN0eWxpc3RzIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNGOUY1RUUiLCAidGhlbWVfY29sb3IiOiAiIzFBMTUxMCIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdC1wcmltYXJ5IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBSUFBQURkdnZ0UUFBQUMyRWxFUVZSNDJ1M2RzVTBETVFDRjRSdUJob2ExNkppRWtWaUZuam5vS09pZ1NoRkVGQjFIL0o3OVNYK1p3bzQvWFpHem5lM3o0MTNhM2VZckVFQUNTQUFKSUFrZ0FTU0FCSkFFa0FBU1FBSklBa2dBQ1NBQkpBRWtnQVNRQUJKQUVrQUNTQUFKSUFrZ0FTU0FCSkFFa0FBU1FBSklBa2dBQ1NBQkpJQWtnQVNRQUxwNUQvZDNwNjcvNUpBQVNrUnp6V29OcHpNeG8yMCtPajlYS3dyUVpJYTJpZldjVmlzTjBFeUd0cm4xaEFjUVBhc2JBb2loMlFITnJhZmRFRUFNQWNRUVFBQUJSTStLaGdCaUNLQmJyU3REQUIyOGhBQUJkTXpLTFdzSW9DTVhES0JGQVdVT0dLQUNRTW5EQmlnZFVQN0lBY29GVkRGNGdFSUJGWTBmb0RoQVhWTUFDQ0NBSmdMVU9BdUFVZ0NWVGdRZ2dBQUNpQ0dBQUFJSUlJQldCZlNYNlFBRUVFQUFBUVFRUUFBQkJCQkFBQUhFRUVEMEFBUVFRQUFCQkJCQUFBRUVFRUFBZVJzUEVFQUFBUVFRUVBaRUF3UVFRTTZGT1JmbVpDbzlBQUVFa05zNUFJb0E1SDRnZ054UUJ0Qm9RTzVJQk1ndHJRQUZBSEpQTkVCdXFnY29BSkQveWdCb3FuL3JlWDErQW1nU1FEZnJHODF2QVFUUVRqcXhqQUFxMDVObUNLQStQVkdHQUFJSW9QWDA1QmdDQ0NDQXluK2dBd2dnZ0FCcTB4TmlDQ0JQSUlBQUFnZ2dnQUFDQ0tBZVEzNkpCZ2dnZ0FZWjhqWWVvUDJHN0FjQ2FDY2pPeElCT3UvdDVmRXlKbnVpQVRvWGM3bWlJeGtBQmJrcGxRUlFxSjRXUXdEbDZxa3dCRkF1blFwR0FBRUVVQ1NnQS9Va0d3S29RMCtzSVlCcTlHUWFBZ2dnZ0FBQ2FCcEEvNm9uMEJCQUFBRUVFRUFBQVFRUVFGTWJta05QbWlHQVBJRUFBZ2dnZ0FDS050VCtHaFVnZ0FDcU5kUzdqOHk3c1BHRzZqWkJBeFJrcUhFWFBVQVJqTUpQRDlxUm1JZ3A3Y3l5UGRGeUtnTWdnQUJhbVpHVHFYSTJYaU1NVmN3TG9EaEpYZE1CYUx5bjZ2RURKSUFFa0FBU1FCSkFBa2dBQ1NBSklBRWtnQVNRQkpBQUVrQUNTQUpJQUFrZ0FTU0FKSUFFa0FBU1FCSkFBa2dBQ1NBSklBRWtnQVNRQkpBQVVrSmZUbUg0RThYSFlQY0FBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FJQUFBQjdHa090QUFBTFcwbEVRVlI0MnUzWnNVM3JBQlNHMFl4QVE1TzE2SmlFa1ZpRm5qbm9LT2lnUWtoUm9zUkVUbnkvSTUzK1NiNzIvd1c5M2RmbkJ3QkJPNDhBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBUUFBOEJRQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUI4QlFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFZ0d2WlB6NmN0djYveVBtOHdBZ0FheSt2NlpjQkJJRFc3aStlSGhzdEF3Z0FRM2Ivb3ZVeHpScUFBREIyL1krdGowV1dBUVNBNGROL2JIMXNzUVlnQUNTbS8zQ0FETEVNSUFDMDF2OTNmVXl3QmlBQTVOWWZEVUFBc1A3SUFBS0E5VWNERUFDc1B4cUFBR0Q5MFFBRUFBRkFCaEFBckQ4YWdBQWdBR2dBQW9EMVJ3TVFBT3NQR29BQUNBQm9BQUlnQUtBQkNJRDFCdzFBQUFRQU5BQUJFQURRQUFUQStvTUdDQUFDQUFJZ0FBZ0FhSUFBSUFCb0FBS0FBS0FCQ0FBQ2dBWWdBQWdBQW9BQVlQM1JBQVFBQVVBREVBQUVBQTFBQUJBQUJBQUJRQURRQUFRQUFVQURFQUFFNE81bXprTVFBQUZBQUt5WW8yaUFBQ0FBWnN1Qk5FQUFFQUJUVmI2VVQxSUFNQ3NXcW5zeVg2VUFZRTJzVXZSMnZrb0J3SWpZbys0RmZaZ0NnUGt3UTkwNytqWUZBTU5oZmFMWDlHMEtBQ2JEOUdnQUFvQzlzRGl4cy9vOEJRQkxZVzQwQUFIQVRGaVoySDE5b1FLQWdUQXhHb0FBWUIyTVMrektQbElCd0RTWWxlNnRmYWNDZ0ZFd0tORnorMDRGQUl0Z1RhSVg5NTBLQU9iQWxHZ0FBb0FBR0pIWTNaMU1BREFFRmtRREVBQUV3SGJFcnU5ZUFvQUEyQTRCUUFBUUFNT2hBUWdBQW1BeUN1K0FZd2tBQW1Bdk5BQUJRQUNNaFFBZ0FBaUFwU2k4Q1M0bEFBaUFtZEFBQkFBQnNCRUNnQUFnQUFhaThENDRrd0FnQUFZaStrcTRrUUFnQUFiQ0h3RUlBQUpnSGZ3UmdBQWdBTlpCQUJBQUJJQ3hMNFlEQ1FBQ1lCMzhFWUFBSUFDbXdSOEJDQUFDNEt3Q2dBQWdBQWdBQW9BQW9BRUlBQUtBQUNBQUNBQUNnQUQ0d2dXQXJiMGhyaU1BQ0lCZEVBQUVBQUd3Q3dLQUFDQUFqSDlKbkVZQUVBQzc0SThBQkFBQk1Bb0NnQUFnQUFnQUFvQUE0TDhCRUFBRUFBRkFBQkFBQkFBQjhHRUxBQUtBQVBpd0JRQUJRQUI4MkFLQUFDQUFQbXdCOEo2NE5RTGd3eFlBNzRsYkl3QStiS1BnUFhGckJNQ0hiUlM4SjI2TkFQaXdqWUwzeEswRkFCKzJVZkNxT0xjQTRLdTJDTjRUdHhZQWZOaEd3WHZpMWdLQUQ5c29lRS9jV2dEd1lSc0Y3NGxiQ3dBK2JLUGdQWEZyQVVBQWpJTDN4SzBGQUFFd0N0NFR0eFlBQk1Bb2VFL2NXZ0FRQUtNZ0FBZ0FBbUFVQkFBQlFBQmNWZ0FRQUFTQTJTK0o2d2dBQW1BVUJBQUJRQUNNZ2dBZ0FBZ0EvZ01BQVVBQThQTWZBVUFBRUFBRUFBRkFBQkFBbjdjQXNMM1h3NEVFQUFHd0N3S0FBQ0FBZGtFQUVBQUVBT3VQQUNBQUNBQUNnQUFnQUFnQUFzQ21Yd3czRWdBRXdEVDQrWThBSUFEV3djOS9CQUFCUUFBUUFBU0FnYStFTXdrQUFtQWQvUHhIQUJBQUErSG5Qd0tBQU5pSTJTK0RTd2tBQW1BakJBQUJRQURNaFBWSEFCQUFZekg3TlhBc0FVQUFqSVVBSUFBSWdMMncvZ2dBQW1BMVpyOEE3aVVBQ0lEaHNQNElBQUpnT3dRQUFVQUF6TWZzMHp1WkFDQUFGc1Q2SXdBSWdCM0pITjNWQkFCYllFcXNQd0tBQUJpVXpMbDlwd0tBUmJBcDBWdjdUZ1VBbzJCWmlsZjJrUW9BcHNHK1JFL3NJeFVBcklPSnNmNElBQWJDMW1RdTZ3c1ZBTXlFdWJIK0NBQ1d3dTVrRHVyekZBRHNoZW14L2dnQUpzTUdaZTdvMnhRQURJY2xLbDdRaHlrQW1BK1RWTHlkcjFJQU1DTG1LWG95WDZVQVlFM3NWUEZTUGtrQndLellyT2lCRHAvQTI4dXo3MVFBc0MrVkdHU2Yzcy9XbjgvSEt3RFltdTBWd2tQNHorNHJnUUFnQUpoK0dSQUFCSUQyOU11QUFDQUExTmRmQXdRQUFTQTYvVElnQUFnQTlmWFhBQUZBQU9pdXZ3WUlBQUpBZC8wMVFBQVFBTHJycndFQ2dBRFFYWDhORUFBRUFBRkFBQkFBWXV1dkFRS0FBTkJkZncwUUFBUUFBVUFBRUFCaTY2OEJBb0FBSUFBSUFBSkFiUDAxUUFBUUFBUUFBVUFBRUFBRVFBQ2dzUDRhSUFBTUQ0Q3ozcEFBQ0lDbklBQUNJQUFDSUFBSWdBQUlnQUFJQUFJZ0FBSWdBQUtBQUFpQUFBaUFBQ0FBQWlBQUFpQUFDSUFBV0g4TkVBQUVRQUEwd1BvTEFBSWdBQUlnQUFLQUFBaUFBQWlBQUNBQUFpQUFBaUFBQ0lBQUNJQUFDQUFDSUFBQ0lBQUNnQUFnQUFJZ0FBZ0FHbUQ5QlFBQlFBQVFBQVFBQVVBQUJFQUFhRFRBYVFRQUFVQUFFQUFCRUFBeURYQVVBVUFBRUFBRUFBRWcwd0RuRUFBRWdHSURIRUlBRUFBRUFBRkFBTWcwd0FrRUFBR2cyQUFQWHdBUUFJb044TmdGQUFHZzJBQVBYQUFRQUlvTjhLZ0ZBQUVnbHdHUFZ3QVFBSW9OOEdBRkFBRncyVndHUEV3QlFBQUU0QzY4dno2dGxnRlBXd0FRQUFHNHdjb3ZjNVVTZVA0Q2dBQUl3RFpHLzlJWS9LMkN4eTRBQ0lBQXpObjlCU1ZBQUJBQUFaZzIvVElnQUFpQUFLU25Yd1lFQUFFUWdQVDB5NEFBSUFBQ2tKNStHUkFBQkVBQTZ1dXZBUUtBQUFoQWRQcGxRQUFRQUFHb3I3OEdDQUFDSUFEZDlkY0FBVUFBQktDNy9ob2dBQWlBQUVTblh3WUVBQUVRZ1ByNmE0QUFJQUFDSUFBSUFBSWdBTEgxMXdBQlFBQUVvTHYrR2lBQUNJQUFkTmRmQXdRQUFSQ0E3dnByZ0FBZ0FBSWdBQWdBQXVDeXNmWFhBQUZBQUFTZ3UvNGFJQUFJZ0FBSUFBS0FBQkJiZncwUUFBUkFBQVFBQVVBQXJIK1Mwd3NBQWlBQUFvQUFJQURXWHdNUUFBUkFBQVFBQVVBQXJMOEdJQUFDSUFBQ0lBQUlnQUFJZ0FBSUFBSWdBQUpnL1RVQUFSQUFBUkFBQVVBQUJFQUFCRUFBRUFBQkVBQUJFQUFFUUFBRXdQcHJBQUlnQUFJZ0FBSWdBQWlBQUFpQUFBZ0FBaUFBQWlBQUFvQUFDSUFBQ0lBQUlBQUNJQUFDSUFBSWdBQUlnQUFJQUFJZ0FBSWdBQUtBQUFpQUFBaUFBS0FCMXQvNmE0QUFJQUFDb0FIV1h3QVFBQUVRQUFFUUFBUkFBQVJBQUFRQUFSQUFCRUFBRUFBQkVBQUVBQUVRQUFGQUFKamFBS2UwK0FJZ0FBaUFBQ0FBQW9BQUNJQUFJQURNYm9BamFvRDFGd0FFUUFBUUFBRkFBQVJBQUJBQVpqZkErUVJBQUFTQVlnTWNUZ09zdndBZ0FBaUFBQWdBbVFZNG1RQUlnQUFnQUdpQTlSY0FNZzF3TEFFUUFBR2cyQUJuMGdEckx3QVVHK0JBQWlBQUFrQ3hBVTZqQWRaZkFDZzJ3RkVFUUFBRWdHSURuRU1Eckw4QWtNdUFFd2lBQUFnQXVReDQ3QnBnL1FXQVlnTThjQTJ3L2dKQXF3UWVyd0FJZ0FEUUtvR0hxUUhXWHdDWVh3V1BTQU9zdndBQUdtRDlCUURRQU9zdkFJQUFDSUFBQUJwZy9RVUF5R2ZBNFFRQUtEYkF5UVFBS0RiQXNRUUFLRGJBbVFRQXlHWEFhUVFBS0RiQVVRUUF5R1hBSVFRQXlHWEF3eGNBSUpjQkQxd0FnRndHUEdRQkFGb2w4RWdGQUFqRndLTVRBR0J5R3p3RUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUFmQVVBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQVRBVXdBUUFBQUVBQUFCQUdDZ2IyU1I2ZkIwSllTeUFBQUFBRWxGVGtTdVFtQ0MiLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogImFueSBtYXNrYWJsZSJ9XX0="><!-- /PWA -->
 <title>Palette — Color Formula Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -196,6 +208,197 @@
     main { padding: 32px 40px; }
   }
 
+  /* ── DATA & BACKUP ── */
+  .backup-body { padding: 0 16px 16px; }
+
+  .backup-status {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--warm-white); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;
+  }
+  .backup-status-icon { font-size: 1.6rem; }
+  .backup-status-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 3px; }
+  .backup-status-date { font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+
+  .backup-actions { display: flex; flex-direction: column; gap: 10px; }
+
+  .backup-action-card {
+    display: flex; align-items: center; gap: 14px;
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px;
+    transition: all 0.15s;
+  }
+  .backup-action-card:hover { border-color: var(--accent-light); }
+  .backup-action-card.danger-card:hover { border-color: #F5C4B0; background: #FEF6F3; }
+  .backup-action-icon { font-size: 1.3rem; flex-shrink: 0; width: 28px; text-align: center; }
+  .backup-action-info { flex: 1; min-width: 0; }
+  .backup-action-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 2px; }
+  .backup-action-sub { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+
+  /* ── SEARCH DROPDOWN ── */
+  .search-results-dropdown {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    width: 320px; background: white; border-radius: 14px;
+    border: 1px solid var(--border); box-shadow: var(--shadow-lg);
+    z-index: 500; overflow: hidden; max-height: 420px; overflow-y: auto;
+  }
+  .search-section-label {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); padding: 10px 14px 6px; background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+  }
+  .search-result-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; cursor: pointer; transition: background 0.1s;
+    border-bottom: 1px solid var(--border);
+  }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-item:hover { background: var(--warm-white); }
+  .search-result-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--ink); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700; flex-shrink: 0;
+  }
+  .search-result-avatar.formula { background: var(--accent); }
+  .search-result-avatar.service { background: var(--gold); color: var(--ink); }
+  .search-result-name { font-weight: 600; font-size: 0.85rem; }
+  .search-result-sub { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+  .search-no-results { padding: 16px 14px; font-size: 0.85rem; color: var(--muted); text-align: center; }
+
+  .report-custom-range {
+    background: white; border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 20px; margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .report-custom-inner { display: flex; gap: 16px; flex-wrap: wrap; }
+  .report-custom-inner .form-group { flex: 1; min-width: 140px; margin-bottom: 0; }
+
+  .report-drill-hint {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    color: var(--muted); font-weight: 400; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-left: 8px;
+  }
+
+  .report-bar-row { margin-bottom: 12px; cursor: pointer; border-radius: 8px; padding: 4px; transition: background 0.15s; }
+  .report-bar-row:hover { background: var(--warm-white); }
+  .report-bar-row.no-drill { cursor: default; }
+  .report-bar-row.no-drill:hover { background: none; }
+
+  /* Drill-down table */
+  .drill-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .drill-table th {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); padding: 8px 12px;
+    border-bottom: 1px solid var(--border); text-align: left; background: var(--warm-white);
+  }
+  .drill-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--ink); }
+  .drill-table tr:last-child td { border-bottom: none; }
+  .drill-table tr:hover td { background: var(--warm-white); }
+  .drill-table .drill-total td { font-weight: 700; background: var(--cream); border-top: 2px solid var(--border); }
+  .modal-wide { max-width: 600px; width: 95%; }
+
+  /* ── REPORTS PAGE ── */
+  .report-period-row {
+    display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .report-period-btn {
+    padding: 7px 18px; border-radius: 20px; border: 1px solid var(--border);
+    background: white; font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    cursor: pointer; transition: all 0.15s; color: var(--muted);
+  }
+  .report-period-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .report-period-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .report-summary-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-bottom: 20px;
+  }
+  @media (max-width: 600px) { .report-summary-row { grid-template-columns: repeat(2, 1fr); } }
+
+  .report-stat-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px; box-shadow: var(--shadow); text-align: center;
+  }
+  .report-stat-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+  .report-stat-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 4px; }
+
+  .report-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  @media (max-width: 640px) { .report-grid { grid-template-columns: 1fr; } }
+
+  .report-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 16px; padding: 20px; box-shadow: var(--shadow);
+  }
+  .report-card-wide { grid-column: 1 / -1; }
+  .report-card-title {
+    font-weight: 600; font-size: 0.92rem; margin-bottom: 16px;
+    padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+
+  /* Bar chart rows */
+  .report-bar-row { margin-bottom: 12px; }
+  .report-bar-label { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .report-bar-name { font-size: 0.82rem; color: var(--ink); font-weight: 500; }
+  .report-bar-value { font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .report-bar-track { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .report-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+  /* Earnings timeline */
+  .report-timeline { display: flex; flex-direction: column; gap: 8px; }
+  .report-timeline-row {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .report-timeline-label { font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; width: 72px; flex-shrink: 0; }
+  .report-timeline-bar-wrap { flex: 1; }
+  .report-timeline-amount { font-size: 0.82rem; font-weight: 600; color: var(--ink); width: 60px; text-align: right; flex-shrink: 0; }
+
+  .report-empty { text-align: center; padding: 24px 16px; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+
+  /* ── IOS INSTALL BANNER ── */
+  .ios-install-banner {
+    position: fixed; bottom: calc(var(--tab-h) + 12px); left: 12px; right: 12px;
+    background: var(--ink); color: var(--cream);
+    border-radius: 16px; padding: 14px 16px;
+    display: flex; align-items: center; gap: 12px;
+    box-shadow: var(--shadow-lg); z-index: 800;
+    animation: slideUp 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .ios-install-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .ios-install-text { flex: 1; min-width: 0; }
+  .ios-install-title { font-weight: 600; font-size: 0.88rem; margin-bottom: 3px; }
+  .ios-install-sub { font-size: 0.75rem; opacity: 0.75; line-height: 1.4; }
+  .ios-install-close {
+    background: rgba(255,255,255,0.15); border: none; color: var(--cream);
+    width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+    font-size: 0.75rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .ios-install-close:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── CUSTOM CONFIRM DIALOG ── */
+  .confirm-overlay {
+    position: fixed; inset: 0; background: rgba(26,21,16,0.5);
+    backdrop-filter: blur(3px); z-index: 900;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+  }
+  .confirm-box {
+    background: white; border-radius: 16px; padding: 24px;
+    max-width: 320px; width: 100%; box-shadow: var(--shadow-lg);
+    animation: slideUp 0.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .confirm-message { font-size: 0.92rem; line-height: 1.5; color: var(--ink); margin-bottom: 20px; }
+  .confirm-actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .btn-danger {
+    background: #C0522A; color: white; border: none;
+    padding: 9px 20px; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    font-weight: 500; cursor: pointer; transition: all 0.15s;
+  }
+  .btn-danger:hover { background: #A8431E; }
+
   @media (max-width: 767px) {
     .desktop-sidebar { display: none; }
     .header-search { display: none; }
@@ -382,16 +585,59 @@
   /* ── FORMULA GRID ── */
   .section-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
 
-  .formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .formula-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; align-items: start; }
 
   .formula-card {
     background: white; border-radius: 14px; border: 1px solid var(--border);
     padding: 18px; box-shadow: var(--shadow); transition: all 0.2s; position: relative; overflow: hidden;
   }
   .formula-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--gold)); }
-  .formula-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .formula-card:hover { box-shadow: var(--shadow-lg); }
 
   .formula-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+
+  /* ── FORMULA PHOTOS ── */
+  .formula-photo-wrap {
+    margin-bottom: 14px; border-radius: 10px; overflow: hidden;
+    max-height: 220px; cursor: zoom-in;
+  }
+  .formula-photo { width: 100%; height: 220px; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .formula-photo:hover { opacity: 0.92; }
+  .photo-upload-area {
+    border: 2px dashed var(--border); border-radius: 10px;
+    padding: 20px; cursor: pointer; transition: all 0.15s;
+    text-align: center; background: var(--warm-white);
+  }
+  .photo-upload-area:hover { border-color: var(--accent); background: var(--accent-light); }
+  .photo-upload-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 0.82rem; }
+  .photo-upload-placeholder span:first-child { font-size: 1.8rem; }
+  .photo-upload-preview { width: 100%; max-height: 180px; object-fit: cover; border-radius: 8px; display: block; }
+
+  /* ── QUICK LOG FORMULA ── */
+  .appt-log-formula-hint {
+    margin: 8px 0 4px; padding: 8px 12px;
+    background: var(--accent-light); border-radius: 8px;
+    font-size: 0.8rem; color: var(--accent); font-weight: 500;
+    cursor: pointer; transition: all 0.15s; text-align: center;
+  }
+  .appt-log-formula-hint:hover { background: var(--accent); color: white; }
+
+  .formula-card-toggle { cursor: pointer; user-select: none; margin-bottom: 0; }
+  .formula-card-toggle:hover { opacity: 0.85; }
+  .formula-chevron { font-size: 0.85rem; color: var(--muted); flex-shrink: 0; }
+  .formula-expand-body { border-top: 1px solid var(--border); padding-top: 14px; }
+  .formula-card-actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .btn-formula-action {
+    padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border);
+    background: white; font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+    cursor: pointer; transition: all 0.15s; color: var(--ink);
+  }
+  .btn-formula-action:hover { border-color: var(--ink); background: var(--cream); }
+  .btn-formula-action.accent { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .btn-formula-action.accent:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-formula-action.danger:hover { border-color: #C0522A; color: #C0522A; background: #FDE8DC; }
+  .formula-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  @media (max-width: 480px) { .formula-edit-grid { grid-template-columns: 1fr; } }
   .formula-date { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
   .formula-service { font-weight: 600; font-size: 0.95rem; }
 
@@ -607,6 +853,45 @@
     text-transform: uppercase; margin-left: 4px;
   }
 
+  /* ── CLIENT NOTES CARD ── */
+  .client-notes-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 18px;
+    margin-bottom: 16px; box-shadow: var(--shadow);
+  }
+  .client-notes-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .client-notes-label {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+  }
+  .client-notes-body {
+    font-size: 0.88rem; line-height: 1.6; color: var(--ink);
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .client-notes-empty {
+    font-size: 0.85rem; color: var(--muted); font-style: italic;
+    cursor: pointer;
+  }
+  .client-notes-empty:hover { color: var(--accent); }
+  .client-notes-textarea {
+    width: 100%; border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 12px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; line-height: 1.6; color: var(--ink);
+    background: var(--warm-white); resize: vertical; min-height: 90px;
+    outline: none; transition: border-color 0.15s;
+  }
+  .client-notes-textarea:focus { border-color: var(--accent); }
+  .client-notes-edit-actions { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; }
+  .btn-notes-edit {
+    background: none; border: none; font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; color: var(--muted); cursor: pointer;
+    padding: 4px 8px; border-radius: 6px; transition: all 0.15s;
+  }
+  .btn-notes-edit:hover { color: var(--accent); background: var(--accent-light); }
+
   /* ── LAST CUT CARD ── */
   .last-cut-card {
     background: white; border-radius: 14px; border: 1px solid var(--border);
@@ -725,12 +1010,31 @@
   .rev-empty p { font-size: 0.85rem; max-width: 260px; margin: 0 auto; line-height: 1.6; }
 
   /* ── SETTINGS PAGE ── */
-  .settings-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .settings-header { margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
   .settings-header h1 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 4px; }
   .settings-header p { color: var(--muted); font-size: 0.85rem; }
 
-  .settings-section { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; width: 100%; }
+  /* ── SETTINGS ACCORDION ── */
+  .settings-accordion {
+    background: white; border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 12px; overflow: hidden;
+    box-shadow: var(--shadow); transition: box-shadow 0.2s;
+  }
+  .settings-accordion-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 20px; cursor: pointer; user-select: none;
+    transition: background 0.15s;
+  }
+  .settings-accordion-header:hover { background: var(--warm-white); }
+  .settings-accordion-icon { font-size: 1.3rem; flex-shrink: 0; width: 28px; text-align: center; }
+  .settings-accordion-info { flex: 1; min-width: 0; }
+  .settings-accordion-title { font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+  .settings-accordion-sub { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .settings-accordion-chevron { font-size: 0.85rem; color: var(--muted); flex-shrink: 0; }
+  .settings-accordion-body { border-top: 1px solid var(--border); }
+  .settings-accordion-action-row { display: flex; justify-content: flex-end; padding: 14px 16px 0; }
 
+  .settings-section { background: white; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; width: 100%; }
   .settings-section-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px; border-bottom: 1px solid var(--border); gap: 12px; flex-wrap: wrap; }
   .settings-section-title { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
   .settings-section-sub { font-size: 0.78rem; color: var(--muted); }
@@ -853,9 +1157,13 @@
     <div class="desktop-nav" id="desktopNav">
       <button class="nav-btn active" id="navClients" onclick="switchPage('clients')">Clients</button>
       <button class="nav-btn" id="navSchedule" onclick="switchPage('schedule')">Schedule</button>
+      <button class="nav-btn" id="navReports" onclick="switchPage('reports')">Reports</button>
       <button class="nav-btn" id="navSettings" onclick="switchPage('settings')">⚙ Settings</button>
     </div>
-    <input class="header-search" type="text" placeholder="Search clients..." oninput="handleSearch(this.value)">
+    <div style="position:relative;">
+      <input class="header-search" type="text" id="globalSearch" placeholder="Search clients, formulas..." oninput="handleSearch(this.value)" onfocus="showSearchResults()" onblur="hideSearchResults()">
+      <div class="search-results-dropdown" id="searchDropdown" style="display:none;"></div>
+    </div>
   </div>
 </header>
 
@@ -933,6 +1241,7 @@
           <div id="clientContactBar"></div>
         </div>
         <div class="stats-row" id="statsRow"></div>
+        <div id="clientNotesCard"></div>
         <div id="lastCutCard"></div>
         <div class="section-label">Formula History</div>
         <div class="formula-grid" id="formulaGrid"></div>
@@ -987,31 +1296,137 @@
       </div>
     </div>
 
+    <!-- REPORTS PAGE -->
+    <div class="page" id="pageReports">
+      <div class="settings-header">
+        <h1>Reports</h1>
+        <p>Your business at a glance</p>
+      </div>
+
+      <!-- PERIOD SELECTOR -->
+      <div class="report-period-row">
+        <button class="report-period-btn active" id="rperiod-month" onclick="setReportPeriod('month')">This Month</button>
+        <button class="report-period-btn" id="rperiod-year" onclick="setReportPeriod('year')">This Year</button>
+        <button class="report-period-btn" id="rperiod-all" onclick="setReportPeriod('all')">All Time</button>
+        <button class="report-period-btn" id="rperiod-custom" onclick="setReportPeriod('custom')">Custom Range</button>
+        <button class="btn-primary" style="margin-left:auto;" onclick="exportReportExcel()">⬇ Export Excel</button>
+      </div>
+
+      <!-- CUSTOM DATE RANGE (hidden until selected) -->
+      <div class="report-custom-range" id="reportCustomRange" style="display:none;">
+        <div class="report-custom-inner">
+          <div class="form-group">
+            <label>From</label>
+            <input type="date" id="reportDateFrom" onchange="renderReports()">
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <input type="date" id="reportDateTo" onchange="renderReports()">
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY CARDS -->
+      <div class="report-summary-row" id="reportSummary"></div>
+
+      <!-- CHARTS ROW -->
+      <div class="report-grid">
+        <div class="report-card">
+          <div class="report-card-title">📋 Services Breakdown <span class="report-drill-hint">Tap a row to see visits</span></div>
+          <div id="reportServices"></div>
+        </div>
+        <div class="report-card">
+          <div class="report-card-title">⭐ Top Clients <span class="report-drill-hint">Tap a row to see visits</span></div>
+          <div id="reportTopClients"></div>
+        </div>
+        <div class="report-card report-card-wide">
+          <div class="report-card-title">💰 Earnings Over Time</div>
+          <div id="reportEarningsChart"></div>
+        </div>
+        <div class="report-card report-card-wide">
+          <div class="report-card-title">🎨 Most Used Products <span class="report-drill-hint">Tap a row to see formulas</span></div>
+          <div id="reportProducts"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- SETTINGS PAGE -->
     <div class="page" id="pageSettings">
       <div class="settings-header">
         <h1>Settings</h1>
-        <p>Customize your service menu, prices, and defaults</p>
+        <p>Manage your services, data, and preferences</p>
       </div>
 
-      <!-- SERVICE MENU SECTION -->
-      <div class="settings-section">
-        <div class="settings-section-header">
-          <div>
-            <div class="settings-section-title">Service Menu</div>
-            <div class="settings-section-sub">These populate your appointment and formula dropdowns</div>
+      <!-- ACCORDION: SERVICE MENU -->
+      <div class="settings-accordion" id="saccServiceMenu">
+        <div class="settings-accordion-header" onclick="toggleSettingsSection('serviceMenu')">
+          <div class="settings-accordion-icon">✂️</div>
+          <div class="settings-accordion-info">
+            <div class="settings-accordion-title">Service Menu</div>
+            <div class="settings-accordion-sub">Manage services, prices, and durations</div>
           </div>
-          <button class="btn-primary" onclick="openNewServiceModal()">+ Add Service</button>
+          <span class="settings-accordion-chevron" id="schev-serviceMenu">▾</span>
         </div>
+        <div class="settings-accordion-body" id="sbody-serviceMenu" style="display:none;">
+          <div class="settings-accordion-action-row">
+            <button class="btn-primary" onclick="openNewServiceModal()">+ Add Service</button>
+          </div>
+          <div class="settings-category-tabs" id="serviceCategoryTabs"></div>
+          <div class="service-list" id="serviceList"></div>
+        </div>
+      </div>
 
-        <div class="settings-category-tabs" id="serviceCategoryTabs"></div>
-        <div class="service-list" id="serviceList"></div>
+      <!-- ACCORDION: DATA & BACKUP -->
+      <div class="settings-accordion" id="saccDataBackup">
+        <div class="settings-accordion-header" onclick="toggleSettingsSection('dataBackup')">
+          <div class="settings-accordion-icon">🔒</div>
+          <div class="settings-accordion-info">
+            <div class="settings-accordion-title">Data & Backup</div>
+            <div class="settings-accordion-sub" id="backupSubtitle">Export your data regularly to keep a safe copy</div>
+          </div>
+          <span class="settings-accordion-chevron" id="schev-dataBackup">▾</span>
+        </div>
+        <div class="settings-accordion-body" id="sbody-dataBackup" style="display:none;">
+          <div class="backup-body">
+            <div class="backup-status">
+              <span class="backup-status-icon">📁</span>
+              <div>
+                <div class="backup-status-label">Last Export</div>
+                <div class="backup-status-date" id="lastExportDate">Never</div>
+              </div>
+            </div>
+            <div class="backup-actions">
+              <div class="backup-action-card">
+                <div class="backup-action-icon">⬇</div>
+                <div class="backup-action-info">
+                  <div class="backup-action-title">Export My Data</div>
+                  <div class="backup-action-sub">Downloads a backup file with all clients, formulas, appointments, and settings</div>
+                </div>
+                <button class="btn-primary" onclick="exportData()">Export</button>
+              </div>
+              <div class="backup-action-card">
+                <div class="backup-action-icon">⬆</div>
+                <div class="backup-action-info">
+                  <div class="backup-action-title">Restore from Backup</div>
+                  <div class="backup-action-sub">Load a previously exported file to restore your data</div>
+                </div>
+                <button class="btn-secondary" onclick="document.getElementById('restoreFileInput').click()">Restore</button>
+                <input type="file" id="restoreFileInput" accept=".json" style="display:none" onchange="importData(event)">
+              </div>
+              <div class="backup-action-card danger-card">
+                <div class="backup-action-icon">🗑</div>
+                <div class="backup-action-info">
+                  <div class="backup-action-title">Clear All Data</div>
+                  <div class="backup-action-sub">Permanently deletes all clients, formulas, and appointments. Export first!</div>
+                </div>
+                <button class="btn-danger" onclick="clearAllData()">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
-
-  </main>
-</div>
 
 <!-- BOTTOM TAB BAR (mobile only) -->
 <div class="bottom-tab-bar">
@@ -1026,6 +1441,10 @@
   <button class="tab-btn" id="tabSchedule" onclick="switchPage('schedule')">
     <span class="tab-icon">🗓</span>
     <span class="tab-label">Schedule</span>
+  </button>
+  <button class="tab-btn" id="tabReports" onclick="switchPage('reports')">
+    <span class="tab-icon">📊</span>
+    <span class="tab-label">Reports</span>
   </button>
   <button class="tab-btn" id="tabSettings" onclick="switchPage('settings')">
     <span class="tab-icon">⚙️</span>
@@ -1197,6 +1616,42 @@
   </div>
 </div>
 
+<!-- IOS INSTALL NUDGE -->
+<div id="iosInstallBanner" style="display:none;">
+  <div class="ios-install-banner">
+    <div class="ios-install-icon">🎨</div>
+    <div class="ios-install-text">
+      <div class="ios-install-title">Add Palette to your Home Screen</div>
+      <div class="ios-install-sub">Tap <strong>Share</strong> then <strong>"Add to Home Screen"</strong> for the full app experience</div>
+    </div>
+    <button class="ios-install-close" onclick="dismissInstallBanner()">✕</button>
+  </div>
+</div>
+
+<!-- DRILL-DOWN MODAL -->
+<div class="modal-overlay" id="drillModal">
+  <div class="modal modal-wide">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="drillModalTitle">Visits</div>
+    <div id="drillModalBody" style="max-height:60vh;overflow-y:auto;"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('drillModal')">Close</button>
+      <button class="btn-primary" id="drillExportBtn" onclick="exportDrillCSV()">⬇ Export CSV</button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOM CONFIRM DIALOG -->
+<div class="confirm-overlay" id="confirmOverlay" style="display:none;">
+  <div class="confirm-box">
+    <div class="confirm-message" id="confirmMessage"></div>
+    <div class="confirm-actions">
+      <button class="btn-secondary" onclick="resolveConfirm(false)">Cancel</button>
+      <button class="btn-danger" id="confirmOkBtn" onclick="resolveConfirm(true)">Delete</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const DEFAULT_SERVICES = [
   { id: 's1', name: 'Haircut', category: 'Cut', price: '$55', duration: '60', notes: '' },
@@ -1213,6 +1668,21 @@ const DEFAULT_SERVICES = [
   { id: 's12', name: 'Cut & Color', category: 'Color', price: '$165', duration: '180', notes: '' },
   { id: 's13', name: 'Olaplex Treatment', category: 'Treatment', price: '$40', duration: '30', notes: 'Add-on service' },
 ];
+
+// ── CUSTOM CONFIRM ────────────────────────────────────────────────
+let _confirmResolve = null;
+
+function showConfirm(message, okLabel = 'Delete') {
+  document.getElementById('confirmMessage').textContent = message;
+  document.getElementById('confirmOkBtn').textContent = okLabel;
+  document.getElementById('confirmOverlay').style.display = 'flex';
+  return new Promise(resolve => { _confirmResolve = resolve; });
+}
+
+function resolveConfirm(result) {
+  document.getElementById('confirmOverlay').style.display = 'none';
+  if (_confirmResolve) { _confirmResolve(result); _confirmResolve = null; }
+}
 
 // ── DATA ──────────────────────────────────────────────────────────
 const STORAGE_KEY = 'palette_data_v2';
@@ -1293,17 +1763,21 @@ function switchPage(page) {
   currentPage = page;
   document.getElementById('pageClients').classList.toggle('active', page === 'clients');
   document.getElementById('pageSchedule').classList.toggle('active', page === 'schedule');
+  document.getElementById('pageReports').classList.toggle('active', page === 'reports');
   document.getElementById('pageSettings').classList.toggle('active', page === 'settings');
   // mobile tab bar
   document.getElementById('tabClients')?.classList.toggle('active', page === 'clients');
   document.getElementById('tabSchedule')?.classList.toggle('active', page === 'schedule');
+  document.getElementById('tabReports')?.classList.toggle('active', page === 'reports');
   document.getElementById('tabSettings')?.classList.toggle('active', page === 'settings');
   // desktop nav pills
   document.getElementById('navClients')?.classList.toggle('active', page === 'clients');
   document.getElementById('navSchedule')?.classList.toggle('active', page === 'schedule');
+  document.getElementById('navReports')?.classList.toggle('active', page === 'reports');
   document.getElementById('navSettings')?.classList.toggle('active', page === 'settings');
   if (page === 'schedule') renderAppointments();
   if (page === 'settings') renderSettings();
+  if (page === 'reports') renderReports();
 }
 
 // The center + button context-aware action
@@ -1423,6 +1897,7 @@ function selectClient(id) {
     ? `<div class="contact-bar">${contacts.join('')}</div>` : '';
 
   renderStats(id);
+  renderClientNotes(id);
   renderLastCutCard(id);
   renderFormulas(id);
   renderClientList();
@@ -1439,6 +1914,57 @@ function renderStats(clientId) {
     <div class="stat-card"><div class="stat-value" style="font-size:1rem;padding-top:4px;">${last ? formatDate(last.date) : '—'}</div><div class="stat-label">Last Visit</div></div>
     <div class="stat-card"><div class="stat-value">${upcoming}</div><div class="stat-label">Upcoming</div></div>
   `;
+}
+
+function renderClientNotes(clientId) {
+  const el = document.getElementById('clientNotesCard');
+  if (!el) return;
+  const client = data.clients.find(c => c.id === clientId);
+  if (!client) return;
+  const notes = client.notes || '';
+
+  el.innerHTML = `
+    <div class="client-notes-card">
+      <div class="client-notes-header">
+        <div class="client-notes-label">📝 Notes</div>
+        <button class="btn-notes-edit" id="notesEditBtn" onclick="startEditNotes('${clientId}')">✎ Edit</button>
+      </div>
+      <div id="notesViewBody">
+        ${notes
+          ? `<div class="client-notes-body">${notes.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`
+          : `<div class="client-notes-empty" onclick="startEditNotes('${clientId}')">Add notes about this client — preferences, personality, the little details that matter...</div>`
+        }
+      </div>
+      <div id="notesEditBody" style="display:none;">
+        <textarea class="client-notes-textarea" id="notesTextarea" placeholder="e.g. Prefers afternoon appointments. Always wants coffee — oat milk. Nervous about going too light...">${notes}</textarea>
+        <div class="client-notes-edit-actions">
+          <button class="btn-notes-edit" onclick="cancelEditNotes('${clientId}')">Cancel</button>
+          <button class="btn-formula-action accent" onclick="saveClientNotes('${clientId}')">✓ Save</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function startEditNotes(clientId) {
+  document.getElementById('notesViewBody').style.display = 'none';
+  document.getElementById('notesEditBody').style.display = 'block';
+  document.getElementById('notesEditBtn').style.display = 'none';
+  document.getElementById('notesTextarea').focus();
+}
+
+function cancelEditNotes(clientId) {
+  document.getElementById('notesViewBody').style.display = 'block';
+  document.getElementById('notesEditBody').style.display = 'none';
+  document.getElementById('notesEditBtn').style.display = '';
+}
+
+function saveClientNotes(clientId) {
+  const notes = document.getElementById('notesTextarea').value.trim();
+  const idx = data.clients.findIndex(c => c.id === clientId);
+  if (idx === -1) return;
+  data.clients[idx].notes = notes;
+  saveData(data);
+  renderClientNotes(clientId);
 }
 
 function renderLastCutCard(clientId) {
@@ -1471,27 +1997,250 @@ function renderFormulas(clientId) {
   const formulas = data.formulas.filter(f => f.clientId === clientId).sort((a,b) => b.date.localeCompare(a.date));
   const grid = document.getElementById('formulaGrid');
   if (!formulas.length) {
-    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">✦</div><p>No formulas yet. Tap "+ Formula" to add this client's first color record.</p></div>`;
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">✦</div><p>No formulas yet. Tap "+ Log Formula" to add this client's first color record.</p></div>`;
     return;
   }
   grid.innerHTML = formulas.map(f => `
-    <div class="formula-card">
-      <div class="formula-card-header">
-        <div><div class="formula-date">${formatDate(f.date)}</div><div class="formula-service">${f.service}</div></div>
-        <div class="result-swatch" style="background:${f.color}" title="${f.color}"></div>
+    <div class="formula-card" id="fcard-${f.id}">
+
+      <!-- COLLAPSED HEADER — always visible, tap to expand -->
+      <div class="formula-card-header formula-card-toggle" onclick="toggleFormulaCard('${f.id}')">
+        <div>
+          <div class="formula-date">${formatDate(f.date)}</div>
+          <div class="formula-service">${f.service}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="result-swatch" style="background:${f.color}" title="${f.color}"></div>
+          <span class="formula-chevron" id="fchev-${f.id}">▾</span>
+        </div>
       </div>
-      <div class="formula-items">
-        <div class="formula-row formula-row-header"><span>Product</span><span>Developer</span><span style="text-align:right">Amount</span></div>
-        ${f.ingredients.map(i => `
-          <div class="formula-row">
-            <div><div class="formula-product">${i.product}</div>${i.shade ? `<div class="formula-shade">${i.shade}</div>` : ''}</div>
-            <div class="formula-shade">${i.developer || '—'}</div>
-            <div class="formula-amount">${i.amount || '—'}</div>
-          </div>`).join('')}
+
+      <!-- EXPANDED BODY -->
+      <div class="formula-expand-body" id="fbody-${f.id}" style="display:none;">
+
+        <!-- VIEW MODE -->
+        <div id="fview-${f.id}">
+          ${f.photo ? `<div class="formula-photo-wrap"><img class="formula-photo" src="${f.photo}" alt="Result photo" onclick="viewPhoto('${f.id}')"></div>` : ''}
+          <div class="formula-items">
+            <div class="formula-row formula-row-header"><span>Product</span><span>Developer</span><span style="text-align:right">Amount</span></div>
+            ${f.ingredients.map(i => `
+              <div class="formula-row">
+                <div><div class="formula-product">${i.product}</div>${i.shade ? `<div class="formula-shade">${i.shade}</div>` : ''}</div>
+                <div class="formula-shade">${i.developer || '—'}</div>
+                <div class="formula-amount">${i.amount || '—'}</div>
+              </div>`).join('')}
+          </div>
+          ${f.time ? `<div class="formula-meta"><span>⏱ ${f.time} min</span></div>` : ''}
+          ${f.notes ? `<div class="formula-notes">"${f.notes}"</div>` : ''}
+          <div class="formula-card-actions">
+            <button class="btn-formula-action" onclick="startEditFormula('${f.id}')">✎ Edit</button>
+            <button class="btn-formula-action accent" onclick="copyFormula('${f.id}')">⧉ Copy as New</button>
+            <button class="btn-formula-action danger" onclick="deleteFormula('${f.id}')">✕ Delete</button>
+          </div>
+        </div>
+
+        <!-- EDIT MODE -->
+        <div id="fedit-${f.id}" style="display:none;">
+          <div class="formula-edit-grid">
+            <div class="form-group"><label>Date</label><input type="date" id="fed-date-${f.id}" value="${f.date}"></div>
+            <div class="form-group"><label>Service</label><select id="fed-service-${f.id}">${getServiceOptions(f.service)}</select></div>
+            <div class="form-group"><label>Result Color</label>
+              <div class="color-picker-group">
+                <input type="color" id="fed-colorpicker-${f.id}" value="${f.color}" oninput="document.getElementById('fed-colorhex-${f.id}').value=this.value">
+                <input type="text" id="fed-colorhex-${f.id}" value="${f.color}" oninput="document.getElementById('fed-colorpicker-${f.id}').value=this.value" placeholder="#hex">
+              </div>
+            </div>
+            <div class="form-group"><label>Process Time (min)</label><input type="number" id="fed-time-${f.id}" value="${f.time || ''}" min="0" max="180" placeholder="e.g. 35"></div>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="display:block;margin-bottom:8px;font-size:0.78rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">Ingredients</label>
+            <div class="formula-row" style="margin-bottom:5px;">
+              <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);">PRODUCT</div>
+              <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);">DEVELOPER</div>
+              <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);">AMOUNT</div>
+              <div></div>
+            </div>
+            <div id="fed-ingredients-${f.id}">
+              ${f.ingredients.map((ing, idx) => `
+                <div class="ingredient-row" id="fed-ing-row-${f.id}-${idx}">
+                  <input type="text" placeholder="Product name" value="${ing.product || ''}" data-field="product">
+                  <input type="text" placeholder="Developer" value="${ing.developer || ''}" data-field="developer">
+                  <input type="text" placeholder="Amount" value="${ing.amount || ''}" data-field="amount">
+                  <button onclick="removeEditIngredientRow('${f.id}', ${idx})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;">✕</button>
+                </div>`).join('')}
+            </div>
+            <button class="btn-add-ingredient" onclick="addEditIngredientRow('${f.id}')">+ Add Ingredient</button>
+          </div>
+          <div class="form-group" style="margin-bottom:14px;"><label>Notes</label><textarea id="fed-notes-${f.id}" placeholder="Adjustments, client reaction...">${f.notes || ''}</textarea></div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label>📸 Result Photo <span class="field-optional">optional</span></label>
+            <div class="photo-upload-area" id="fed-photoarea-${f.id}" onclick="document.getElementById('fed-photoinput-${f.id}').click()">
+              ${f.photo
+                ? `<img class="photo-upload-preview" id="fed-photopreview-${f.id}" src="${f.photo}">`
+                : `<div class="photo-upload-placeholder" id="fed-photopreview-${f.id}"><span>📷</span><span>Tap to add a before/after photo</span></div>`
+              }
+            </div>
+            <input type="file" id="fed-photoinput-${f.id}" accept="image/*" capture="environment" style="display:none" onchange="previewFormulaPhoto('${f.id}', this)">
+            ${f.photo ? `<button class="btn-notes-edit" style="margin-top:6px;" onclick="removeFormulaPhoto('${f.id}')">✕ Remove photo</button>` : ''}
+          </div>
+          <div class="formula-card-actions">
+            <button class="btn-formula-action" onclick="cancelEditFormula('${f.id}')">Cancel</button>
+            <button class="btn-formula-action accent" onclick="saveEditFormula('${f.id}')">✓ Save Changes</button>
+          </div>
+        </div>
+
       </div>
-      ${f.time ? `<div class="formula-meta"><span>⏱ ${f.time} min</span></div>` : ''}
-      ${f.notes ? `<div class="formula-notes">"${f.notes}"</div>` : ''}
     </div>`).join('');
+}
+
+// ── FORMULA CARDS ─────────────────────────────────────────────────
+function toggleFormulaCard(id) {
+  const body = document.getElementById(`fbody-${id}`);
+  const chev = document.getElementById(`fchev-${id}`);
+  const isOpen = body.style.display !== 'none';
+
+  // Collapse ALL cards fully first
+  data.formulas.filter(f => f.clientId === activeClientId).forEach(f => {
+    const b = document.getElementById(`fbody-${f.id}`);
+    const c = document.getElementById(`fchev-${f.id}`);
+    const card = document.getElementById(`fcard-${f.id}`);
+    if (b) { b.style.display = 'none'; b.style.height = ''; }
+    if (c) c.textContent = '▾';
+    if (card) card.style.minHeight = '';
+  });
+
+  // Open the tapped card only if it was closed
+  if (!isOpen) {
+    body.style.display = 'block';
+    chev.textContent = '▴';
+  }
+}
+
+function startEditFormula(id) {
+  document.getElementById(`fview-${id}`).style.display = 'none';
+  document.getElementById(`fedit-${id}`).style.display = 'block';
+}
+
+function cancelEditFormula(id) {
+  document.getElementById(`fview-${id}`).style.display = 'block';
+  document.getElementById(`fedit-${id}`).style.display = 'none';
+}
+
+function addEditIngredientRow(fid) {
+  const container = document.getElementById(`fed-ingredients-${fid}`);
+  const idx = container.children.length;
+  const row = document.createElement('div');
+  row.className = 'ingredient-row';
+  row.id = `fed-ing-row-${fid}-${idx}`;
+  row.innerHTML = `
+    <input type="text" placeholder="Product name" data-field="product">
+    <input type="text" placeholder="Developer" data-field="developer">
+    <input type="text" placeholder="Amount" data-field="amount">
+    <button onclick="removeEditIngredientRow('${fid}', ${idx})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;">✕</button>`;
+  container.appendChild(row);
+}
+
+function removeEditIngredientRow(fid, idx) {
+  const row = document.getElementById(`fed-ing-row-${fid}-${idx}`);
+  if (row) row.remove();
+}
+
+function getEditIngredients(fid) {
+  const rows = document.getElementById(`fed-ingredients-${fid}`).querySelectorAll('.ingredient-row');
+  return Array.from(rows).map(row => ({
+    product: row.querySelector('[data-field="product"]').value.trim(),
+    shade: '',
+    developer: row.querySelector('[data-field="developer"]').value.trim(),
+    amount: row.querySelector('[data-field="amount"]').value.trim(),
+  })).filter(i => i.product);
+}
+
+function saveEditFormula(id) {
+  const idx = data.formulas.findIndex(f => f.id === id);
+  if (idx === -1) return;
+  // Grab photo from temp storage if set
+  const photoEl = document.getElementById(`fed-photopreview-${id}`);
+  const newPhoto = (photoEl && photoEl.tagName === 'IMG') ? photoEl.src : (data.formulas[idx].photo || null);
+  data.formulas[idx] = {
+    ...data.formulas[idx],
+    date: document.getElementById(`fed-date-${id}`).value,
+    service: document.getElementById(`fed-service-${id}`).value,
+    color: document.getElementById(`fed-colorhex-${id}`).value,
+    time: document.getElementById(`fed-time-${id}`).value,
+    notes: document.getElementById(`fed-notes-${id}`).value.trim(),
+    ingredients: getEditIngredients(id),
+    photo: newPhoto,
+  };
+  saveData(data);
+  renderFormulas(activeClientId);
+  renderStats(activeClientId);
+  setTimeout(() => {
+    const body = document.getElementById(`fbody-${id}`);
+    const chev = document.getElementById(`fchev-${id}`);
+    if (body) { body.style.display = 'block'; chev.textContent = '▴'; }
+  }, 10);
+}
+
+function previewFormulaPhoto(fid, input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const area = document.getElementById(`fed-photoarea-${fid}`);
+    if (!area) return;
+    area.innerHTML = `<img class="photo-upload-preview" id="fed-photopreview-${fid}" src="${e.target.result}">`;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function removeFormulaPhoto(fid) {
+  const area = document.getElementById(`fed-photoarea-${fid}`);
+  if (area) area.innerHTML = `<div class="photo-upload-placeholder" id="fed-photopreview-${fid}"><span>📷</span><span>Tap to add a before/after photo</span></div>`;
+}
+
+function viewPhoto(fid) {
+  const f = data.formulas.find(x => x.id === fid);
+  if (!f?.photo) return;
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:zoom-out;';
+  overlay.innerHTML = `<img src="${f.photo}" style="max-width:95vw;max-height:90vh;border-radius:12px;object-fit:contain;">`;
+  overlay.onclick = () => overlay.remove();
+  document.body.appendChild(overlay);
+}
+
+function copyFormula(id) {
+  const original = data.formulas.find(f => f.id === id);
+  if (!original) return;
+  const copy = {
+    ...JSON.parse(JSON.stringify(original)), // deep clone
+    id: 'f' + Date.now(),
+    date: new Date().toISOString().split('T')[0],
+  };
+  data.formulas.push(copy);
+  saveData(data);
+  renderFormulas(activeClientId);
+  renderStats(activeClientId);
+  // Auto-open the new copy (it'll be at the top after sort)
+  setTimeout(() => {
+    const body = document.getElementById(`fbody-${copy.id}`);
+    const chev = document.getElementById(`fchev-${copy.id}`);
+    if (body) {
+      body.style.display = 'block'; chev.textContent = '▴';
+      // Jump straight into edit mode so she can tweak it
+      document.getElementById(`fview-${copy.id}`).style.display = 'none';
+      document.getElementById(`fedit-${copy.id}`).style.display = 'block';
+      body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 10);
+}
+
+async function deleteFormula(id) {
+  const f = data.formulas.find(x => x.id === id);
+  const ok = await showConfirm(`Delete this ${f?.service || 'formula'} from ${formatDate(f?.date)}? This can't be undone.`);
+  if (!ok) return;
+  data.formulas = data.formulas.filter(x => x.id !== id);
+  saveData(data);
+  renderFormulas(activeClientId);
+  renderStats(activeClientId);
 }
 
 // ── APPOINTMENTS ──────────────────────────────────────────────────
@@ -1516,6 +2265,8 @@ function apptCardHTML(a, isUpcoming) {
   const today = new Date().toISOString().split('T')[0];
   const isToday = a.date === today;
   const cls = isToday ? 'today' : isUpcoming ? 'upcoming' : 'past';
+  const hasFormula = data.formulas.some(f => f.clientId === a.clientId &&
+    f.date === a.date && f.service === a.service);
 
   return `<div class="appt-card ${cls}" onclick="openEditApptModal('${a.id}')">
     <div class="appt-edit-hint">✎ tap to edit</div>
@@ -1529,12 +2280,34 @@ function apptCardHTML(a, isUpcoming) {
     </div>
     ${a.notes ? `<div class="appt-notes">${a.notes}</div>` : ''}
     ${a.toolNotes ? `<div class="appt-notes" style="color:var(--appt-blue);border-top:1px solid var(--border);margin-top:6px;padding-top:6px;">✂️ ${a.toolNotes}</div>` : ''}
+    ${!isUpcoming && !hasFormula ? `
+      <div class="appt-log-formula-hint" onclick="event.stopPropagation(); quickLogFormula('${a.id}')">
+        🎨 Log formula for this visit
+      </div>` : ''}
     <div class="appt-card-actions" onclick="event.stopPropagation()">
       <button class="btn-calendar" onclick="downloadICS('${a.id}')">📅 Apple Calendar</button>
       <button class="btn-edit-appt" onclick="openEditApptModal('${a.id}')">✎ Edit</button>
       <button class="btn-delete-appt" onclick="deleteAppt('${a.id}')">Remove</button>
     </div>
   </div>`;
+}
+
+function quickLogFormula(apptId) {
+  const a = data.appointments.find(x => x.id === apptId);
+  if (!a) return;
+  // Navigate to client and open formula modal pre-filled with appointment details
+  selectClient(a.clientId);
+  setTimeout(() => {
+    openNewFormulaModal();
+    // Pre-fill date and service from the appointment
+    document.getElementById('fDate').value = a.date;
+    const serviceSelect = document.getElementById('fService');
+    for (let i = 0; i < serviceSelect.options.length; i++) {
+      if (serviceSelect.options[i].value === a.service) {
+        serviceSelect.selectedIndex = i; break;
+      }
+    }
+  }, 300);
 }
 
 // ── ICS EXPORT ────────────────────────────────────────────────────
@@ -1570,8 +2343,9 @@ function downloadICS(apptId) {
   document.body.removeChild(link); URL.revokeObjectURL(url);
 }
 
-function deleteAppt(id) {
-  if (!confirm('Remove this appointment?')) return;
+async function deleteAppt(id) {
+  const ok = await showConfirm('Remove this appointment?');
+  if (!ok) return;
   data.appointments = data.appointments.filter(a => a.id !== id);
   saveData(data); renderAppointments();
 }
@@ -1682,7 +2456,7 @@ function saveAppt() {
     saveData(data); closeModal('apptModal'); renderAppointments();
     if (activeClientId) renderLastCutCard(activeClientId);
     if (inlineNewClient) { renderClientList(); inlineNewClient = false; }
-    if (confirm('Appointment updated! Re-export to Apple Calendar?')) downloadICS(editingApptId);
+    showConfirm('Appointment updated! Re-export to Apple Calendar?', 'Re-export').then(ok => { if (ok) downloadICS(editingApptId); });
   } else {
     const appt = { id: 'a' + Date.now(), ...apptData };
     data.appointments.push(appt);
@@ -1807,10 +2581,11 @@ function saveClient() {
   }
 }
 
-function deleteClient() {
+async function deleteClient() {
   if (!activeClientId) return;
   const client = data.clients.find(c => c.id === activeClientId);
-  if (!confirm(`Remove ${client?.name} from your client list?\n\nThis will also delete all their formulas and appointments. This can't be undone.`)) return;
+  const ok = await showConfirm(`Remove ${client?.name} from your client list? This will also delete all their formulas and appointments. This can't be undone.`);
+  if (!ok) return;
   data.clients = data.clients.filter(c => c.id !== activeClientId);
   data.formulas = data.formulas.filter(f => f.clientId !== activeClientId);
   data.appointments = data.appointments.filter(a => a.clientId !== activeClientId);
@@ -1820,7 +2595,131 @@ function deleteClient() {
   renderClientList();
 }
 
+// ── DATA BACKUP ───────────────────────────────────────────────────
+const BACKUP_DATE_KEY = 'palette_last_export';
+
+function updateBackupStatus() {
+  const el = document.getElementById('lastExportDate');
+  const sub = document.getElementById('backupSubtitle');
+  if (!el) return;
+  const last = localStorage.getItem(BACKUP_DATE_KEY);
+  if (!last) {
+    el.textContent = 'Never — export soon!';
+    el.style.color = '#C0522A';
+    if (sub) { sub.textContent = '⚠️ No backup yet — export soon!'; sub.style.color = '#C0522A'; }
+    return;
+  }
+  const days = Math.floor((Date.now() - new Date(last)) / 86400000);
+  const label = days === 0 ? 'Today' : days === 1 ? 'Yesterday' : `${formatDate(last)} (${days} days ago)`;
+  el.style.color = days > 14 ? '#C0522A' : 'var(--ink)';
+  el.textContent = label;
+  if (sub) {
+    sub.textContent = `Last export: ${label}`;
+    sub.style.color = days > 14 ? '#C0522A' : 'var(--muted)';
+  }
+}
+
+function exportData() {
+  const exportPayload = { ...data, _exportedAt: new Date().toISOString(), _version: 1 };
+  const blob = new Blob([JSON.stringify(exportPayload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Palette-Backup-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  localStorage.setItem(BACKUP_DATE_KEY, new Date().toISOString().split('T')[0]);
+  updateBackupStatus();
+  showToast('✅ Backup exported! Keep that file somewhere safe.');
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      if (!parsed.clients || !parsed.formulas) {
+        showToast('⚠️ That file doesn\'t look like a Palette backup.'); return;
+      }
+      const ok = await showConfirm(`Restore from "${file.name}"? This will replace all your current data.`, 'Restore');
+      if (!ok) return;
+      // Strip metadata before saving
+      const { _exportedAt, _version, ...restored } = parsed;
+      data = { ...data, ...restored };
+      saveData(data);
+      renderClientList();
+      renderAppointments();
+      renderSettings();
+      updateBackupStatus();
+      showToast('✅ Data restored successfully!');
+    } catch {
+      showToast('⚠️ Couldn\'t read that file. Make sure it\'s a Palette backup.');
+    }
+    // Reset input so same file can be re-selected if needed
+    event.target.value = '';
+  };
+  reader.readAsText(file);
+}
+
+async function clearAllData() {
+  const ok = await showConfirm('Clear ALL data? This permanently deletes every client, formula, and appointment. Export a backup first!', 'Clear Everything');
+  if (!ok) return;
+  data = { clients: [], formulas: [], appointments: [], services: DEFAULT_SERVICES };
+  saveData(data);
+  activeClientId = null;
+  document.getElementById('clientView').classList.remove('active');
+  document.getElementById('welcomeView').classList.add('active');
+  renderClientList();
+  renderAppointments();
+  renderSettings();
+  showToast('🗑 All data cleared.');
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────
+function showToast(message) {
+  let toast = document.getElementById('paletteToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'paletteToast';
+    toast.style.cssText = `
+      position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
+      background:var(--ink); color:var(--cream); padding:10px 20px;
+      border-radius:20px; font-size:0.85rem; z-index:9999;
+      box-shadow:var(--shadow-lg); opacity:0; transition:opacity 0.3s;
+      white-space:nowrap; max-width:90vw; text-align:center;
+    `;
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+}
+
 // ── SETTINGS ──────────────────────────────────────────────────────
+const SETTINGS_SECTIONS = ['serviceMenu', 'dataBackup'];
+
+function toggleSettingsSection(id) {
+  const body = document.getElementById(`sbody-${id}`);
+  const chev = document.getElementById(`schev-${id}`);
+  const isOpen = body.style.display !== 'none';
+
+  // Collapse all sections first
+  SETTINGS_SECTIONS.forEach(s => {
+    const b = document.getElementById(`sbody-${s}`);
+    const c = document.getElementById(`schev-${s}`);
+    if (b) b.style.display = 'none';
+    if (c) c.textContent = '▾';
+  });
+
+  // Open if it was closed
+  if (!isOpen) {
+    body.style.display = 'block';
+    chev.textContent = '▴';
+  }
+}
 let activeCategory = 'All';
 let editingServiceId = null;
 
@@ -1830,6 +2729,7 @@ function renderSettings() {
     `<button class="cat-tab ${c === activeCategory ? 'active' : ''}" onclick="setCategory('${c}')">${c}</button>`
   ).join('');
   renderServiceList();
+  updateBackupStatus();
 }
 
 function setCategory(cat) {
@@ -1914,9 +2814,10 @@ function saveService() {
   renderSettings();
 }
 
-function deleteService(id) {
+async function deleteService(id) {
   const s = data.services.find(x => x.id === id);
-  if (!confirm(`Remove "${s?.name}" from your service menu?`)) return;
+  const ok = await showConfirm(`Remove "${s?.name}" from your service menu?`);
+  if (!ok) return;
   data.services = data.services.filter(x => x.id !== id);
   saveData(data);
   renderSettings();
@@ -2188,7 +3089,446 @@ function exportEarningsCSV() {
 }
 
 // ── MISC ──────────────────────────────────────────────────────────
-function handleSearch(val) { renderClientList(val); }
+// ── SEARCH ────────────────────────────────────────────────────────
+let searchHideTimer = null;
+
+function handleSearch(val) {
+  renderClientList(val);
+  if (val.trim().length < 2) { hideSearchResults(); return; }
+  renderSearchDropdown(val.trim());
+}
+
+function showSearchResults() {
+  const val = document.getElementById('globalSearch')?.value?.trim();
+  if (val && val.length >= 2) renderSearchDropdown(val);
+}
+
+function hideSearchResults() {
+  searchHideTimer = setTimeout(() => {
+    const d = document.getElementById('searchDropdown');
+    if (d) d.style.display = 'none';
+  }, 200);
+}
+
+function renderSearchDropdown(query) {
+  clearTimeout(searchHideTimer);
+  const q = query.toLowerCase();
+  const dropdown = document.getElementById('searchDropdown');
+  if (!dropdown) return;
+
+  let html = '';
+
+  // Client matches
+  const clientMatches = data.clients.filter(c =>
+    c.name.toLowerCase().includes(q) ||
+    (c.phone && c.phone.includes(q)) ||
+    (c.email && c.email.toLowerCase().includes(q))
+  ).slice(0, 4);
+
+  if (clientMatches.length) {
+    html += `<div class="search-section-label">Clients</div>`;
+    html += clientMatches.map(c => `
+      <div class="search-result-item" onmousedown="selectClient('${c.id}'); clearSearch()">
+        <div class="search-result-avatar">${initials(c.name)}</div>
+        <div>
+          <div class="search-result-name">${c.name}</div>
+          <div class="search-result-sub">${c.phone || c.email || 'No contact info'}</div>
+        </div>
+      </div>`).join('');
+  }
+
+  // Formula matches — search by service name, notes, ingredients
+  const formulaMatches = [];
+  data.formulas.forEach(f => {
+    const client = data.clients.find(c => c.id === f.clientId);
+    if (!client) return;
+    const ingText = f.ingredients.map(i => i.product + ' ' + (i.shade || '')).join(' ');
+    if (
+      f.service.toLowerCase().includes(q) ||
+      (f.notes && f.notes.toLowerCase().includes(q)) ||
+      ingText.toLowerCase().includes(q)
+    ) {
+      formulaMatches.push({ f, client });
+    }
+  });
+  const topFormulas = formulaMatches.slice(0, 4);
+
+  if (topFormulas.length) {
+    html += `<div class="search-section-label">Formulas</div>`;
+    html += topFormulas.map(({ f, client }) => `
+      <div class="search-result-item" onmousedown="selectClient('${client.id}'); clearSearch()">
+        <div class="search-result-avatar formula">🎨</div>
+        <div>
+          <div class="search-result-name">${f.service} — ${client.name}</div>
+          <div class="search-result-sub">${formatDate(f.date)}${f.notes ? ' · ' + f.notes.slice(0, 40) + (f.notes.length > 40 ? '…' : '') : ''}</div>
+        </div>
+      </div>`).join('');
+  }
+
+  if (!clientMatches.length && !topFormulas.length) {
+    html = `<div class="search-no-results">No results for "${query}"</div>`;
+  }
+
+  dropdown.innerHTML = html;
+  dropdown.style.display = 'block';
+}
+
+function clearSearch() {
+  const el = document.getElementById('globalSearch');
+  if (el) el.value = '';
+  const d = document.getElementById('searchDropdown');
+  if (d) d.style.display = 'none';
+  renderClientList('');
+}
+
+// ── REPORTS ───────────────────────────────────────────────────────
+let currentReportPeriod = 'month';
+let currentDrillData = [];
+let currentDrillTitle = '';
+
+function setReportPeriod(period) {
+  currentReportPeriod = period;
+  ['month','year','all','custom'].forEach(p => {
+    document.getElementById(`rperiod-${p}`)?.classList.toggle('active', p === period);
+  });
+  const customRange = document.getElementById('reportCustomRange');
+  if (period === 'custom') {
+    customRange.style.display = 'block';
+    // Set defaults if empty
+    const today = new Date().toISOString().split('T')[0];
+    const monthAgo = new Date(Date.now() - 30*86400000).toISOString().split('T')[0];
+    if (!document.getElementById('reportDateFrom').value) document.getElementById('reportDateFrom').value = monthAgo;
+    if (!document.getElementById('reportDateTo').value) document.getElementById('reportDateTo').value = today;
+  } else {
+    customRange.style.display = 'none';
+  }
+  renderReports();
+}
+
+function getReportDates() {
+  const today = new Date();
+  const todayStr = today.toISOString().split('T')[0];
+  if (currentReportPeriod === 'month') {
+    return { start: new Date(today.getFullYear(), today.getMonth(), 1).toISOString().split('T')[0], end: todayStr };
+  }
+  if (currentReportPeriod === 'year') {
+    return { start: new Date(today.getFullYear(), 0, 1).toISOString().split('T')[0], end: todayStr };
+  }
+  if (currentReportPeriod === 'custom') {
+    const from = document.getElementById('reportDateFrom')?.value;
+    const to = document.getElementById('reportDateTo')?.value;
+    return { start: from || '2000-01-01', end: to || todayStr };
+  }
+  return { start: '2000-01-01', end: todayStr };
+}
+
+function renderReports() {
+  const { start, end } = getReportDates();
+  const appts = data.appointments.filter(a => a.date >= start && a.date <= end);
+  const formulas = data.formulas.filter(f => f.date >= start && f.date <= end);
+  renderReportSummary(appts);
+  renderReportServices(appts);
+  renderReportTopClients(appts);
+  renderReportEarnings(appts);
+  renderReportProducts(formulas);
+}
+
+function renderReportSummary(appts) {
+  const totalEarnings = appts.reduce((sum, a) => sum + parseAmount(a.price), 0);
+  const totalTips = appts.reduce((sum, a) => sum + parseAmount(a.tip), 0);
+  const uniqueClients = new Set(appts.map(a => a.clientId)).size;
+  const avgPerAppt = appts.length ? (totalEarnings / appts.length) : 0;
+  document.getElementById('reportSummary').innerHTML = `
+    <div class="report-stat-card">
+      <div class="report-stat-value">${appts.length}</div>
+      <div class="report-stat-label">Appointments</div>
+    </div>
+    <div class="report-stat-card">
+      <div class="report-stat-value">${formatMoney(totalEarnings + totalTips)}</div>
+      <div class="report-stat-label">Total Earned</div>
+    </div>
+    <div class="report-stat-card">
+      <div class="report-stat-value">${uniqueClients}</div>
+      <div class="report-stat-label">Clients Seen</div>
+    </div>
+    <div class="report-stat-card">
+      <div class="report-stat-value">${formatMoney(avgPerAppt)}</div>
+      <div class="report-stat-label">Avg per Visit</div>
+    </div>`;
+}
+
+function renderReportServices(appts) {
+  const el = document.getElementById('reportServices');
+  if (!appts.length) { el.innerHTML = `<div class="report-empty">No appointments in this period yet.</div>`; return; }
+  const counts = {};
+  appts.forEach(a => { counts[a.service] = (counts[a.service] || 0) + 1; });
+  const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+  const max = sorted[0][1];
+  const colors = ['var(--accent)','var(--gold)','var(--appt-blue)','#7BAE8A','#A98BD6'];
+  el.innerHTML = sorted.map(([name, count], i) => `
+    <div class="report-bar-row" onclick="drillService('${name.replace(/'/g,"\\'")}')">
+      <div class="report-bar-label">
+        <span class="report-bar-name">${name}</span>
+        <span class="report-bar-value">${count} visit${count !== 1 ? 's' : ''}</span>
+      </div>
+      <div class="report-bar-track">
+        <div class="report-bar-fill" style="width:${(count/max*100).toFixed(1)}%;background:${colors[i%colors.length]};"></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderReportTopClients(appts) {
+  const el = document.getElementById('reportTopClients');
+  if (!appts.length) { el.innerHTML = `<div class="report-empty">No appointments in this period yet.</div>`; return; }
+  const totals = {};
+  appts.forEach(a => {
+    if (!totals[a.clientId]) totals[a.clientId] = { visits: 0, earned: 0 };
+    totals[a.clientId].visits++;
+    totals[a.clientId].earned += parseAmount(a.price) + parseAmount(a.tip);
+  });
+  const sorted = Object.entries(totals)
+    .map(([id, t]) => ({ client: data.clients.find(c => c.id === id), ...t }))
+    .filter(x => x.client)
+    .sort((a,b) => b.earned - a.earned).slice(0, 6);
+  const max = sorted[0]?.earned || 1;
+  const colors = ['var(--gold)','var(--accent)','var(--appt-blue)','#7BAE8A','#A98BD6','var(--muted)'];
+  el.innerHTML = sorted.map(({ client, visits, earned }, i) => `
+    <div class="report-bar-row" onclick="drillClient('${client.id}')">
+      <div class="report-bar-label">
+        <span class="report-bar-name">${client.name}</span>
+        <span class="report-bar-value">${formatMoney(earned)} · ${visits} visit${visits !== 1 ? 's' : ''}</span>
+      </div>
+      <div class="report-bar-track">
+        <div class="report-bar-fill" style="width:${(earned/max*100).toFixed(1)}%;background:${colors[i%colors.length]};"></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderReportEarnings(appts) {
+  const el = document.getElementById('reportEarningsChart');
+  if (!appts.length) { el.innerHTML = `<div class="report-empty">No earnings data in this period yet.</div>`; return; }
+  const groups = {};
+  appts.forEach(a => {
+    const d = new Date(a.date + 'T12:00:00');
+    let key;
+    if (currentReportPeriod === 'month') {
+      key = `Week ${Math.ceil(d.getDate() / 7)}`;
+    } else {
+      key = d.toLocaleDateString('en-US', { month: 'short', year: currentReportPeriod === 'all' || currentReportPeriod === 'custom' ? 'numeric' : undefined });
+    }
+    if (!groups[key]) groups[key] = 0;
+    groups[key] += parseAmount(a.price) + parseAmount(a.tip);
+  });
+  const entries = Object.entries(groups);
+  const max = Math.max(...entries.map(([,v]) => v), 1);
+  el.innerHTML = `<div class="report-timeline">` + entries.map(([label, amount]) => `
+    <div class="report-timeline-row">
+      <div class="report-timeline-label">${label}</div>
+      <div class="report-timeline-bar-wrap">
+        <div class="report-bar-track">
+          <div class="report-bar-fill" style="width:${(amount/max*100).toFixed(1)}%;background:var(--accent);"></div>
+        </div>
+      </div>
+      <div class="report-timeline-amount">${formatMoney(amount)}</div>
+    </div>`).join('') + `</div>`;
+}
+
+function renderReportProducts(formulas) {
+  const el = document.getElementById('reportProducts');
+  if (!formulas.length) { el.innerHTML = `<div class="report-empty">No formula data in this period yet.</div>`; return; }
+  const counts = {};
+  formulas.forEach(f => {
+    f.ingredients.forEach(i => {
+      if (!i.product?.trim()) return;
+      counts[i.product.trim()] = (counts[i.product.trim()] || 0) + 1;
+    });
+  });
+  if (!Object.keys(counts).length) { el.innerHTML = `<div class="report-empty">No product data yet.</div>`; return; }
+  const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,8);
+  const max = sorted[0][1];
+  const colors = ['var(--accent)','var(--gold)','var(--appt-blue)','#7BAE8A','#A98BD6'];
+  el.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;">` +
+    sorted.map(([name, count], i) => `
+      <div class="report-bar-row" onclick="drillProduct('${name.replace(/'/g,"\\'")}')">
+        <div class="report-bar-label">
+          <span class="report-bar-name">${name}</span>
+          <span class="report-bar-value">×${count}</span>
+        </div>
+        <div class="report-bar-track">
+          <div class="report-bar-fill" style="width:${(count/max*100).toFixed(1)}%;background:${colors[i%colors.length]};"></div>
+        </div>
+      </div>`).join('') + `</div>`;
+}
+
+// ── DRILL-DOWN ─────────────────────────────────────────────────────
+function showDrillModal(title, rows, columns) {
+  currentDrillTitle = title;
+  currentDrillData = rows;
+  document.getElementById('drillModalTitle').textContent = title;
+
+  if (!rows.length) {
+    document.getElementById('drillModalBody').innerHTML = `<div class="report-empty">No records found.</div>`;
+    openModal('drillModal'); return;
+  }
+
+  const totals = {};
+  columns.forEach(c => { if (c.sum) totals[c.key] = rows.reduce((s, r) => s + (parseFloat(r[c.key]) || 0), 0); });
+
+  const thead = `<tr>${columns.map(c => `<th>${c.label}</th>`).join('')}</tr>`;
+  const tbody = rows.map(r =>
+    `<tr>${columns.map(c => `<td>${r[c.key] ?? '—'}</td>`).join('')}</tr>`
+  ).join('');
+  const tfoot = `<tr class="drill-total">${columns.map(c =>
+    `<td>${c.sum ? (c.money ? formatMoney(totals[c.key]) : totals[c.key]) : (c.totalLabel || '')}</td>`
+  ).join('')}</tr>`;
+
+  document.getElementById('drillModalBody').innerHTML =
+    `<table class="drill-table"><thead>${thead}</thead><tbody>${tbody}</tbody><tfoot>${tfoot}</tfoot></table>`;
+  openModal('drillModal');
+}
+
+function drillService(service) {
+  const { start, end } = getReportDates();
+  const appts = data.appointments.filter(a => a.service === service && a.date >= start && a.date <= end);
+  const rows = appts.map(a => {
+    const client = data.clients.find(c => c.id === a.clientId);
+    return {
+      date: formatDate(a.date),
+      client: client?.name || '—',
+      time: formatTime(a.time),
+      price: formatMoney(parseAmount(a.price)),
+      tip: formatMoney(parseAmount(a.tip)),
+      total: formatMoney(parseAmount(a.price) + parseAmount(a.tip)),
+      _price: parseAmount(a.price),
+      _tip: parseAmount(a.tip),
+      _total: parseAmount(a.price) + parseAmount(a.tip),
+    };
+  }).sort((a,b) => b.date.localeCompare(a.date));
+
+  showDrillModal(`📋 ${service} — All Visits`, rows.map(r => ({
+    date: r.date, client: r.client, time: r.time,
+    price: r.price, tip: r.tip, total: r.total
+  })), [
+    { key: 'date', label: 'Date' },
+    { key: 'client', label: 'Client', totalLabel: `${rows.length} visits` },
+    { key: 'time', label: 'Time' },
+    { key: 'price', label: 'Service' },
+    { key: 'tip', label: 'Tip' },
+    { key: 'total', label: 'Total' },
+  ]);
+  // Store raw for export
+  currentDrillData = rows.map(r => ({ Date: r.date, Client: r.client, Time: r.time, Service: r.price, Tip: r.tip, Total: r.total }));
+}
+
+function drillClient(clientId) {
+  const client = data.clients.find(c => c.id === clientId);
+  const { start, end } = getReportDates();
+  const appts = data.appointments.filter(a => a.clientId === clientId && a.date >= start && a.date <= end);
+  const rows = appts.map(a => ({
+    date: formatDate(a.date),
+    service: a.service,
+    time: formatTime(a.time),
+    price: formatMoney(parseAmount(a.price)),
+    tip: formatMoney(parseAmount(a.tip)),
+    total: formatMoney(parseAmount(a.price) + parseAmount(a.tip)),
+  })).sort((a,b) => b.date.localeCompare(a.date));
+
+  showDrillModal(`⭐ ${client?.name} — All Visits`, rows, [
+    { key: 'date', label: 'Date' },
+    { key: 'service', label: 'Service', totalLabel: `${rows.length} visits` },
+    { key: 'time', label: 'Time' },
+    { key: 'price', label: 'Service' },
+    { key: 'tip', label: 'Tip' },
+    { key: 'total', label: 'Total' },
+  ]);
+  currentDrillData = rows.map(r => ({ Date: r.date, Service: r.service, Time: r.time, 'Service Price': r.price, Tip: r.tip, Total: r.total }));
+}
+
+function drillProduct(product) {
+  const { start, end } = getReportDates();
+  const rows = [];
+  data.formulas.forEach(f => {
+    if (f.date < start || f.date > end) return;
+    f.ingredients.forEach(i => {
+      if (i.product?.trim() !== product) return;
+      const client = data.clients.find(c => c.id === f.clientId);
+      rows.push({ date: formatDate(f.date), client: client?.name || '—', service: f.service, developer: i.developer || '—', amount: i.amount || '—' });
+    });
+  });
+  rows.sort((a,b) => b.date.localeCompare(a.date));
+  showDrillModal(`🎨 ${product} — All Uses`, rows, [
+    { key: 'date', label: 'Date' },
+    { key: 'client', label: 'Client', totalLabel: `${rows.length} uses` },
+    { key: 'service', label: 'Service' },
+    { key: 'developer', label: 'Developer' },
+    { key: 'amount', label: 'Amount' },
+  ]);
+  currentDrillData = rows.map(r => ({ Date: r.date, Client: r.client, Service: r.service, Developer: r.developer, Amount: r.amount }));
+}
+
+// ── EXCEL / CSV EXPORTS ────────────────────────────────────────────
+function exportDrillCSV() {
+  if (!currentDrillData.length) return;
+  const headers = Object.keys(currentDrillData[0]);
+  const rows = [headers, ...currentDrillData.map(r => headers.map(h => r[h] ?? ''))];
+  const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `Palette-${currentDrillTitle.replace(/[^a-z0-9]/gi,'-')}-${new Date().toISOString().split('T')[0]}.csv`;
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+function exportReportExcel() {
+  const { start, end } = getReportDates();
+  const appts = data.appointments.filter(a => a.date >= start && a.date <= end);
+
+  // Build full report as CSV (opens in Excel perfectly)
+  const headers = ['Date','Client','Service','Time','Duration','Service Price','Tip','Total','Notes'];
+  const rows = appts
+    .sort((a,b) => a.date.localeCompare(b.date))
+    .map(a => {
+      const client = data.clients.find(c => c.id === a.clientId);
+      const total = parseAmount(a.price) + parseAmount(a.tip);
+      return [
+        formatDate(a.date),
+        client?.name || '—',
+        a.service,
+        formatTime(a.time),
+        formatDuration(a.duration),
+        formatMoney(parseAmount(a.price)),
+        formatMoney(parseAmount(a.tip)),
+        formatMoney(total),
+        a.notes || '',
+      ];
+    });
+
+  // Summary rows at top
+  const totalEarned = appts.reduce((s,a) => s + parseAmount(a.price) + parseAmount(a.tip), 0);
+  const periodLabel = currentReportPeriod === 'custom'
+    ? `${document.getElementById('reportDateFrom')?.value} to ${document.getElementById('reportDateTo')?.value}`
+    : currentReportPeriod === 'month' ? 'This Month' : currentReportPeriod === 'year' ? 'This Year' : 'All Time';
+
+  const summary = [
+    ['Palette — Earnings Report'],
+    [`Period: ${periodLabel}`],
+    [`Generated: ${formatDate(new Date().toISOString().split('T')[0])}`],
+    [`Total Appointments: ${appts.length}`],
+    [`Total Earned: ${formatMoney(totalEarned)}`],
+    [],
+    headers,
+    ...rows,
+    [],
+    ['','','','','','TOTAL','',formatMoney(totalEarned),''],
+  ];
+
+  const csv = summary.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' }); // BOM for Excel
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = `Palette-Report-${periodLabel.replace(/[^a-z0-9]/gi,'-')}-${new Date().toISOString().split('T')[0]}.csv`;
+  a.click(); URL.revokeObjectURL(a.href);
+  showToast('✅ Report exported! Open in Excel or Google Sheets.');
+}
+
 function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
@@ -2210,6 +3550,78 @@ document.querySelectorAll('.modal-overlay').forEach(o => {
 // ── INIT ──────────────────────────────────────────────────────────
 renderClientList();
 initOnboarding();
+initInstallBanner();
+
+// ── iOS INSTALL BANNER ────────────────────────────────────────────
+function initInstallBanner() {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isStandalone = window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('palette_install_dismissed');
+  if (isIOS && !isStandalone && !dismissed) {
+    // Show after a short delay so it doesn't appear on first load
+    setTimeout(() => {
+      document.getElementById('iosInstallBanner').style.display = 'block';
+    }, 3000);
+  }
+}
+
+function dismissInstallBanner() {
+  document.getElementById('iosInstallBanner').style.display = 'none';
+  localStorage.setItem('palette_install_dismissed', '1');
+}
+
+// ── SERVICE WORKER REGISTRATION ───────────────────────────────────
+if ('serviceWorker' in navigator) {
+  const swCode = `
+const CACHE = 'palette-v1';
+const OFFLINE_URL = self.location.href;
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE).then(cache => cache.add(OFFLINE_URL))
+    .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(
+    fetch(e.request)
+      .then(resp => {
+        const clone = resp.clone();
+        caches.open(CACHE).then(cache => cache.put(e.request, clone));
+        return resp;
+      })
+      .catch(() => caches.match(e.request).then(r => r || caches.match(OFFLINE_URL)))
+  );
+});
+  `.trim();
+
+  const swBlob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl, { scope: '/' })
+    .then(reg => {
+      // Check for updates when app comes back online
+      window.addEventListener('online', () => reg.update());
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            showToast('✨ Update available — close and reopen the app to refresh.');
+          }
+        });
+      });
+    })
+    .catch(() => {}); // Fail silently — app still works without SW
+}
 </script>
 </body>
 </html>
